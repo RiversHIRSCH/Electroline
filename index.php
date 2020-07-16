@@ -1,7 +1,6 @@
 <?php
 
-require_once "drivers/layout.driver.php";
+require_once "drivers/viewsDriver.php";
 
-$layout = new driverLayout();
-$layout->layout();
-?>
+$layout = new viewsDriver();
+$layout->obtenerPlantillaControlador();

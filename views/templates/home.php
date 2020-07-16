@@ -1,142 +1,82 @@
-<nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Logo</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
+<?php
+if (isset($_POST['info'])) {
+    echo '
+    <script>
+        $("#search").val("' . $_POST['info'] . '");
+        obtenerDatosGenerales();
+    </script>
+    ';
+}
 
-        <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+?>
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-        <div class="container">
+<div class="row">
+    <!-- Menu -->
+    <div class="col l3 hide-on-med-and-down white" style="min-height: 100vh; border-right: 5px solid #e57373;">
+        <!-- Inputs para rango de precio -->
+        <div class="row center-align">
+            <br>
+            <div class="col l8 offset-l2">
+                <h6>Busqueda por rango de precio</h6>
+            </div>
+            <div class="col l3 offset-l1">
+                <div class="input-field-small">
+                    <input id="minimo" type="number" min="1" class="validate center-align">
+                    <label for="minimo">Mínimo</label>
+                </div>
+            </div>
+            <div class="col l1">
+                <div class="input-field">
+                    <i class="fas fa-minus"></i>
+                </div>
+            </div>
+            <div class="col l3">
+                <div class="input-field-small">
+                    <input id="maximo" type="number" min="1" class="validate center-align">
+                    <label for="maximo">Máximo</label>
+                </div>
+            </div>
+            <div class="col l2" style="padding-top: 1vh;">
+                <button class="btn-small red lighten-2" onclick="busquedaPorRangoDePrecio();">Buscar</button>
+            </div>
+        </div>
+        <br><br>
+        <!-- Lista de categorias en el menu vertical -->
+        <div class="row center-align">
+            <div class="col l8 offset-l2">
+                <h6>Busqueda por categoría</h6>
+            </div>
             <br><br>
-            <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-            <div class="row center">
-                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-            <div class="row center">
-                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-            </div>
-            <br><br>
-
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn red lighten-2' href='#' data-target='dropdown'>Categorías<i class="material-icons right">arrow_drop_down</i></a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown' class='dropdown-content'>
+                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('audio');">Audio</a></li>
+                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('cableado');">Cableado</a></li>
+                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('iluminación');">Iluminación</a></li>
+                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('componentes');">Componentes</a></li>
+            </ul>
         </div>
     </div>
-    <div class="parallax"><img src="../static/img/background1.jpg" alt="Unsplashed background img 1"></div>
-</div>
-
-
-<div class="container">
-    <div class="section">
-
-        <!--   Icon Section   -->
+    <!-- Dashboard -->
+    <div class="col l9 s12 white" style="height: 90vh; overflow-y: scroll;">
         <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                    <h5 class="center">Speeds up development</h5>
-
-                    <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <h6 id="tituloDashboard" class="center-align">Resultados de busqueda...</h6>
+            <div id="cardVacio" class="col s12 center-align" style="display: none;">
+                <div class="row">
+                    <div class="col s6 offset-s3">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Atención!</span>
+                                <p style="text-align: justify;">No existen resultados con los parámetros seleccionados anteriormente</p>
+                                <hr>
+                                <p class="center-align"><small><i class="fas fa-spin fa-sync-alt"></i> Intente restablecer los parámetros de busqueda</small></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                    <h5 class="center">User Experience Focused</h5>
-
-                    <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-                    <h5 class="center">Easy to work with</h5>
-
-                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-                </div>
-            </div>
+            <div id="busqueda"></div>
         </div>
-
     </div>
 </div>
-
-
-<div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <div class="row center">
-                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-        </div>
-    </div>
-    <div class="parallax"><img src="../static/img/background2.jpg" alt="Unsplashed background img 2"></div>
-</div>
-
-<div class="container">
-    <div class="section">
-
-        <div class="row">
-            <div class="col s12 center">
-                <h3><i class="mdi-content-send brown-text"></i></h3>
-                <h4>Contact Us</h4>
-                <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <div class="row center">
-                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-        </div>
-    </div>
-    <div class="parallax"><img src="../static/img/background3.jpg" alt="Unsplashed background img 3"></div>
-</div>
-
-<footer class="page-footer teal">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-        </div>
-    </div>
-</footer>
