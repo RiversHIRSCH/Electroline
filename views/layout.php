@@ -15,6 +15,11 @@
     <!-- fontawesome-free-5.13.1-web -->
     <link rel="stylesheet" href="views/static/fontawesome/css/all.css">
     <script src="views/static/fontawesome/js/all.js"></script>
+    <!-- DataTables-1.10.21 -->
+    <link rel="stylesheet" href="views/static/datatables/datatables.min.css">
+    <script src="views/static/datatables/datatables.min.js"></script>
+    <link rel="stylesheet" href="views\static\datatables\DataTables-1.10.21\css\dataTables.bootstrap4.min.css">
+    <script src="views\static\datatables\DataTables-1.10.21\js\dataTables.bootstrap4.min.js"></script>
     <!-- init JS -->
     <script src="views/static/js/init.js"></script>
     <!-- Custom CSS -->
@@ -36,22 +41,19 @@
     require_once "./drivers/viewsDriver.php";
     $vt = new viewsDriver();
     $vistasR = $vt->obtenerVistasControlador();
-
     if ($vistasR == "welcome") {
         require_once "./views/templates/welcome.php";
     ?>
         <script>
-            var scr = document.getElementById('cuerpo');
-            scr.style.cssText = 'overflow-y: scroll;';
+            document.getElementById("exitIcon").style.display = "none";
         </script>
     <?php
     } else {
     ?>
         <script>
-            var scr = document.getElementById('cuerpo');
-            scr.style.cssText = 'overflow-y: hidden;';
+            document.getElementById('cuerpo').style.cssText = 'overflow-y: hidden;';
+            document.getElementById("exitIcon").style.display = "block";
         </script>
-
         <!-- Vista solicitada -->
         <?php require_once $vistasR; ?>
     <?php
@@ -60,8 +62,8 @@
 
     <!-- Flotante de redes sociales -->
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
-            <i class="large material-icons tooltipped" data-position="bottom" data-tooltip="Redes">mode_edit</i>
+        <a class="btn-floating btn-large red lighten-2">
+            <i class="large material-icons tooltipped" data-position="left" data-tooltip="Redes sociales">menu</i>
         </a>
         <ul>
             <li><a class="btn-floating blue"><i class="fab fa-facebook-f"></i></a></li>

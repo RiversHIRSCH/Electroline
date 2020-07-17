@@ -33,6 +33,100 @@ $(document).ready(function () {
             .scrollIntoView({ block: "end", behavior: "smooth" });
     });
 
+    // SCROLLSPY'S DE LA SESION DE ADMINISTRADOR
+    $('#linkSeccionInventario').on('click', function () {
+        document
+            .getElementById("seccionAudio")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').addClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionAudio').on('click', function () {
+        document
+            .getElementById("seccionAudio")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').addClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionCableado').on('click', function () {
+        document
+            .getElementById("seccionCableado")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').addClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionIluminación').on('click', function () {
+        document
+            .getElementById("seccionIluminación")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').addClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionComponentes').on('click', function () {
+        document
+            .getElementById("seccionComponentes")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').addClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionVentas').on('click', function () {
+        document
+            .getElementById("seccionVentas")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').addClass("active");
+    });
+    $('#linkSeccionVentasGeneral').on('click', function () {
+        document
+            .getElementById("seccionVentas")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionVentasGeneral').addClass("active");
+    });
+
+    // DETECTAR CLICK EN LOS BOTONES DE REGISTRO O INICIO DE SESION
+    $('#btnIngresar').on('click', function () {
+        document.getElementById("eleccionInicio").style.display = "none";
+        document.getElementById("eleccionRegistro").style.display = "none";
+        document.getElementById("eleccionIngresar").style.display = "block";
+    });
+    $('#btnRegistrarme').on('click', function () {
+        document.getElementById("eleccionInicio").style.display = "none";
+        document.getElementById("eleccionRegistro").style.display = "block";
+        document.getElementById("eleccionIngresar").style.display = "none";
+    });
+    $('#regresarDeRegistro').on('click', function () {
+        document.getElementById("eleccionInicio").style.display = "block";
+        document.getElementById("eleccionRegistro").style.display = "none";
+        document.getElementById("eleccionIngresar").style.display = "none";
+    });
+    $('#regresarDeIngresar').on('click', function () {
+        document.getElementById("eleccionInicio").style.display = "block";
+        document.getElementById("eleccionRegistro").style.display = "none";
+        document.getElementById("eleccionIngresar").style.display = "none";
+    });
+
     // DETECTAR ENTER EN LAS BARRAS DE BUSQUEDA
     $('#search').keypress(function (e) {
         let code = (e.keyCode ? e.keyCode : e.which);
@@ -65,6 +159,158 @@ $(document).ready(function () {
                     $('#info').val(busqueda2);
                     formulario.submit();
                 }
+            }
+        }
+    });
+
+    // DISEÑO DATATABLES DE INVENTARIO Y VENTAS
+    $('#tablaAudio').DataTable({
+        scrollY: 305,
+        scrollX: true,
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
+            },
+            aria: {
+                SortAscending: ": Activar para ordenar la columna de manera ascendente",
+                SortDescending:
+                    ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+    $('#tablaCableado').DataTable({
+        scrollY: 305,
+        scrollX: true,
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
+            },
+            aria: {
+                SortAscending: ": Activar para ordenar la columna de manera ascendente",
+                SortDescending:
+                    ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+    $('#tablaIluminacion').DataTable({
+        scrollY: 305,
+        scrollX: true,
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
+            },
+            aria: {
+                SortAscending: ": Activar para ordenar la columna de manera ascendente",
+                SortDescending:
+                    ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+    $('#tablaComponentes').DataTable({
+        scrollY: 305,
+        scrollX: true,
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
+            },
+            aria: {
+                SortAscending: ": Activar para ordenar la columna de manera ascendente",
+                SortDescending:
+                    ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+    $('#tablaVentas').DataTable({
+        scrollY: 305,
+        scrollX: true,
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
+            },
+            aria: {
+                SortAscending: ": Activar para ordenar la columna de manera ascendente",
+                SortDescending:
+                    ": Activar para ordenar la columna de manera descendente"
             }
         }
     });

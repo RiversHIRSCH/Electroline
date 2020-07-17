@@ -1,13 +1,25 @@
 <!-- Barra de navegacion -->
 <div class="navbar-fixed">
-    <nav class="" style="padding-right: 5vh;">
+    <nav style="padding-right: 2vh;">
         <div class="nav-wrapper">
             <a href="/Electroline" class="brand-logo"><i class="fab fa-accusoft"></i> Electroline</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li id="login"><a href="#" class="tooltipped" data-position="bottom" data-tooltip="Iniciar sesión"><i class="fas fa-user-alt"></i></a></li>
-                <li id="car"><a href="#" class="tooltipped" data-position="bottom" data-tooltip="Carrito"><i class="fas fa-shopping-cart"></i></a></li>
-                <li id="exit"><a href="#" class="tooltipped" data-position="bottom" data-tooltip="Salir"><i class="fas fa-power-off"></i></a></li>
+                <li id="loginIcon">
+                    <a id="inicioSesion" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
+                </li>
+                <li id="carIcon">
+                    <a href="#" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Carrito">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li id="exitIcon">
+                    <a href="#" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Salir">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                </li>
             </ul>
             <!-- Input para buscar -->
             <div class="input-field right hide-on-med-and-down" style="width: 55vh;">
@@ -75,3 +87,94 @@
         <li class="center-align"><a href="#"><i class="fas fa-power-off"></i> Cerrar sesión</a></li>
     </div>
 </ul>
+
+<!-- Tap Target Structure USUARIO -->
+<div class="tap-target red lighten-3" data-target="inicioSesion">
+    <div class="tap-target-content white-text">
+        <div class="row">
+            <div id="eleccionInicio" class="card" style="display: block;">
+                <div class="card-content">
+                    <div class="row">
+                        <h5 class="center grey-text"><strong>BIENVENIDO</strong></h5>
+                        <div class="input-field col s6">
+                            <button id="btnIngresar" class="btn grey waves-effect waves-light left">
+                                Ingresar
+                            </button>
+                        </div>
+                        <div class="input-field col s6">
+                            <button id="btnRegistrarme" class="btn grey waves-effect waves-light right">
+                                Registrarme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="eleccionRegistro" class="card" style="display: none;">
+                <div class="card-content">
+                    <div class="row">
+                        <h5 class="center grey-text"><strong>REGISTRO</strong></h5>
+                        <form>
+                            <div class="input-field col s12">
+                                <input id="nombreUsuario" type="text" class="validate" required>
+                                <label for="nombreUsuario">Nombre</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="domicilioUsuario" type="text" class="validate" required>
+                                <label for="domicilioUsuario">Domicilio</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="emailUsuario" type="email" class="validate" required>
+                                <label for="emailUsuario">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="telefonoUsuario" type="number" class="validate" pattern="[0-9]{10}" required>
+                                <label for="telefonoUsuario">Teléfono</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="contraseniaUsuario" type="password" class="validate" required>
+                                <label for="contraseniaUsuario">Contraseña</label>
+                            </div>
+                            <div class="input-field col s2">
+                                <button id="regresarDeRegistro" class="btn-small btn-floating grey waves-effect waves-light left tooltipped" data-position="bottom" data-tooltip="Atrás">
+                                    <i class="material-icons right">arrow_back</i>
+                                </button>
+                            </div>
+                            <div class="input-field col s10">
+                                <button class="btn-small grey waves-effect waves-light right" type="submit">Registrarme
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="eleccionIngresar" class="card" style="display: none;">
+                <div class="card-content">
+                    <div class="row">
+                        <h5 class="center grey-text"><strong>INICIAR SESIÓN</strong></h5>
+                        <form>
+                            <div class="input-field col s12">
+                                <input id="aliasUsuario" type="text" class="validate" required>
+                                <label for="aliasUsuario">Usuario</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="contraseniaUsuario" type="password" class="validate" required>
+                                <label for="contraseniaUsuario">Contraseña</label>
+                            </div>
+                            <div class="input-field col s2">
+                                <button id="regresarDeIngresar" class="btn-small btn-floating grey waves-effect waves-light left tooltipped" data-position="bottom" data-tooltip="Atrás">
+                                    <i class="material-icons right">arrow_back</i>
+                                </button>
+                            </div>
+                            <div class="input-field col s10">
+                                <button class="btn-small grey waves-effect waves-light right" type="submit">Ingresar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

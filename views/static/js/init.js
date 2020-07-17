@@ -14,5 +14,7 @@ $(document).ready(function () {
     indicators: true
   });
   $('.dropdown-trigger').dropdown();
+  $('.tap-target').tapTarget();
+  $('.scrollspy').scrollSpy();
   //M.AutoInit(); // Inicializar todos los elementos
 });

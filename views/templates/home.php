@@ -7,12 +7,11 @@ if (isset($_POST['info'])) {
     </script>
     ';
 }
-
 ?>
 
 <div class="row">
     <!-- Menu -->
-    <div class="col l3 hide-on-med-and-down white" style="min-height: 100vh; border-right: 5px solid #e57373;">
+    <div class="col l3 hide-on-med-and-down white" style="min-height: 90vh; border-right: 5px solid #e57373;">
         <!-- Inputs para rango de precio -->
         <div class="row center-align">
             <br>
@@ -59,7 +58,7 @@ if (isset($_POST['info'])) {
         </div>
     </div>
     <!-- Dashboard -->
-    <div class="col l9 s12 white" style="height: 90vh; overflow-y: scroll;">
+    <div class="col l9 s12 white" style="overflow-y: scroll; height: 90vh;">
         <div class="row">
             <h6 id="tituloDashboard" class="center-align">Resultados de busqueda...</h6>
             <div id="cardVacio" class="col s12 center-align" style="display: none;">
