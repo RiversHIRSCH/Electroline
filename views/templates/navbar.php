@@ -115,24 +115,24 @@
                         <h5 class="center grey-text"><strong>REGISTRO</strong></h5>
                         <form>
                             <div class="input-field col s12">
-                                <input id="nombreUsuario" type="text" class="validate" required>
-                                <label for="nombreUsuario">Nombre</label>
+                                <input id="nombreRegistroUsuario" type="text" class="validate" required>
+                                <label for="nombreRegistroUsuario">Nombre</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="domicilioUsuario" type="text" class="validate" required>
-                                <label for="domicilioUsuario">Domicilio</label>
+                                <input id="domicilioRegistroUsuario" type="text" class="validate" required>
+                                <label for="domicilioRegistroUsuario">Domicilio</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="emailUsuario" type="email" class="validate" required>
-                                <label for="emailUsuario">Email</label>
+                                <input id="emailRegistroUsuario" type="email" class="validate" required>
+                                <label for="emailRegistroUsuario">Email</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="telefonoUsuario" type="number" class="validate" pattern="[0-9]{10}" required>
-                                <label for="telefonoUsuario">Teléfono</label>
+                                <input id="telefonoRegistroUsuario" type="number" class="validate" pattern="[0-9]{10}" required>
+                                <label for="telefonoRegistroUsuario">Teléfono</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="contraseniaUsuario" type="password" class="validate" required>
-                                <label for="contraseniaUsuario">Contraseña</label>
+                                <input id="contraseniaRegistroUsuario" type="password" class="validate" required>
+                                <label for="contraseniaRegistroUsuario">Contraseña</label>
                             </div>
                             <div class="input-field col s2">
                                 <button id="regresarDeRegistro" class="btn-small btn-floating grey waves-effect waves-light left tooltipped" data-position="bottom" data-tooltip="Atrás">
