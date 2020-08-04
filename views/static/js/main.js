@@ -10,7 +10,6 @@ $(document).ready(function () {
             console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
         },
         success: function (data) {
-            console.log("Datos recuperados0");
             $('#contenedorLoMasNuevo').empty();
             $('#contenedorLoMasNuevo').append(data);
         }

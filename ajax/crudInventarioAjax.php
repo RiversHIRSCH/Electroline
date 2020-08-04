@@ -48,6 +48,7 @@ if (count($resultado) > 0 && $accion == "leer") {
         <table id="tabla' . $_POST['cat'] . '" class="order-column hover nowrap compact" style="width: 100%;">
             <thead>
                 <tr>
+                    <th class="center-align">ID Producto</th>
                     <th class="center-align">Producto</th>
                     <th class="center-align">Marca</th>
                     <th class="center-align">Precio</th>
@@ -60,6 +61,7 @@ if (count($resultado) > 0 && $accion == "leer") {
         foreach ($resultado as $row) {
             echo '
                 <tr>
+                    <td>' . $row['id'] . '</td>
                     <td>' . $row['nombre'] . '</td>
                     <td>' . $row['marca'] . '</td>
                     <td>$ ' . $row['precio'] . '</td>
