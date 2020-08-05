@@ -1,4 +1,7 @@
 <?php
+
+use FFI\Exception;
+
 require_once "conexion.php";
 
 class CrudInventario
@@ -23,15 +26,14 @@ class CrudInventario
             $stmt = null;
         }
     }
-    public static function agregar($producto, $marca, $precio, $categoria, $descripcion)
+    public static function agregar($producto, $marca, $precio, $imagen, $categoria, $descripcion)
     {
-        $SQL = "INSERT INTO inventario (nombre,marca,precio,categoria,descripcion) VALUES ('$producto','$marca','$precio','$categoria','$descripcion');";
+        $SQL = "INSERT INTO inventario (nombre,marca,precio,imagen,categoria,descripcion) VALUES ('$producto','$marca','$precio','$imagen','$categoria','$descripcion');";
         $stmt = Conexion::conectar()->prepare($SQL);
         if ($stmt->execute()) {
-            return true;
+            echo 'success|Producto registrado!';
         } else {
-            return "Peticion registrar fallida";
+            echo "error|Imposible registrar producto!";
         }
-        $stmt = null;
     }
 }

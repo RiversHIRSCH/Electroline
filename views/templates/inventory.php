@@ -4,33 +4,35 @@
         <div class="modal-content">
             <div class="row">
                 <h4 id="tituloModalInventario" class="center grey-text"></h4>
-                <input type="text" id="idProducto" style="display: none;">
+                <input type="text" id="idProducto" name="idProducto" style="display: none;">
+                <input type="text" id="accion" name="accion" style="display: none;">
                 <div class="input-field col s6">
-                    <input id="nombreProducto" type="text" class="validate" required>
+                    <input id="nombreProducto" name="nombreProducto" type="text" class="validate" required>
                     <label for="nombreProducto">Nombre</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="marcaProducto" type="text" class="validate" required>
+                    <input id="marcaProducto" name="marcaProducto" type="text" class="validate" required>
                     <label for="marcaProducto">Marca</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="precioProducto" type="number" class="validate" required>
+                    <input id="precioProducto" name="precioProducto" type="number" class="validate" required>
                     <label for="precioProducto">Precio</label>
                 </div>
                 <div class="file-field input-field col s6">
                     <div class="btn-small red lighten-2 waves-effect waves-light">
                         <span>Imagen</span>
-                        <input type="file" id="imagenProducto">
+                        <input type="file" id="imagenProducto" name="imagenProducto">
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Elige una imagen">
                     </div>
                 </div>
                 <div class="input-field col s6" style="display: none;">
-                    <input id="categoriaProducto" type="text" class="validate" required disabled>
+                    <input id="categoriaProducto" type="text" class="validate" required>
+                    <input type="text" id="idCategoria" name="idCategoria">
                 </div>
                 <div class="input-field col s12">
-                    <textarea id="descripcionProducto" class="materialize-textarea"></textarea>
+                    <textarea id="descripcionProducto" name="descripcionProducto" class="materialize-textarea"></textarea>
                     <label for="descripcionProducto">Descripción</label>
                 </div>
             </div>
@@ -311,26 +313,24 @@
                 console.error("Categoria no encontrada !");
                 break;
         }
+        $('#idCategoria').val(idCategoria);
+        $('#accion').val("agregar");
+        var formData = new FormData(document.getElementById('formInventario'));
         $.ajax({
             type: "POST",
             url: "ajax/crudInventarioAjax.php",
-            data: {
-                accion: "agregar",
-                producto,
-                marca,
-                precio,
-                categoria: idCategoria,
-                descripcion
-            },
-            error: function(data) {
-                console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
-            },
-            success: function(data) {
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function(echo) {
+            let mensaje = echo.split('|');
+            if (mensaje[0] == "success") {
                 $('#modalInventario').modal('close');
-                M.toast({
-                    html: 'Producto agregado exitosamente'
-                });
                 document.getElementById('formInventario').reset();
+                M.toast({
+                    html: mensaje[1]
+                });
                 switch (categoria) {
                     case "Audio":
                         mostrarAudio();
@@ -349,7 +349,56 @@
                         console.error("Tabla no actualizada !");
                         break;
                 }
+            } else if (mensaje[0] == "error") {
+                M.toast({
+                    html: mensaje[1]
+                });
+            } else {
+                M.toast({
+                    html: "Imagen demasiado grande!"
+                });
+                console.log("No se definió el tipo de respuesta: ");
             }
         });
+        // $.ajax({
+        //     type: "POST",
+        //     url: "ajax/crudInventarioAjax.php",
+        //     data: {
+        //         accion: "agregar",
+        //         producto,
+        //         marca,
+        //         precio,
+        //         categoria: idCategoria,
+        //         descripcion
+        //     },
+        //     error: function(data) {
+        //         console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
+        //     },
+        //     success: function(data) {
+        //         $('#modalInventario').modal('close');
+        //         M.toast({
+        //             html: 'Producto agregado exitosamente'
+        //         });
+        //         document.getElementById('formInventario').reset();
+        //         switch (categoria) {
+        //             case "Audio":
+        //                 mostrarAudio();
+        //                 break;
+        //             case "Cableado":
+        //                 mostrarCableado();
+        //                 break;
+        //             case "Iluminacion":
+        //                 mostrarIluminacion();
+        //                 break;
+        //             case "Componentes":
+        //                 mostrarComponentes();
+        //                 break;
+
+        //             default:
+        //                 console.error("Tabla no actualizada !");
+        //                 break;
+        //         }
+        //     }
+        // });
     }
 </script>
