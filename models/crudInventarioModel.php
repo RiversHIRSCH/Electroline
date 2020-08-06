@@ -1,6 +1,5 @@
 <?php
-
-use FFI\Exception;
+error_reporting(0);
 
 require_once "conexion.php";
 
@@ -30,10 +29,14 @@ class CrudInventario
     {
         $SQL = "INSERT INTO inventario (nombre,marca,precio,imagen,categoria,descripcion) VALUES ('$producto','$marca','$precio','$imagen','$categoria','$descripcion');";
         $stmt = Conexion::conectar()->prepare($SQL);
-        if ($stmt->execute()) {
-            echo 'success|Producto registrado!';
-        } else {
-            echo "error|Imposible registrar producto!";
+        try {
+            if ($stmt->execute()) {
+                echo 'success|Producto registrado!';
+            } else {
+                echo "error|Imposible registrar producto!";
+            }
+        } catch (Exception $e) {
+            echo "error|Imagen demasiado grande!";
         }
     }
     public static function editar($idProducto, $nombre, $marca, $precio, $imagen, $categoria, $descripcion)
@@ -57,10 +60,14 @@ class CrudInventario
                 WHERE id='$idProducto';";
         }
         $stmt = Conexion::conectar()->prepare($SQL);
-        if ($stmt->execute()) {
-            echo "success|Producto actualizado!";
-        } else {
-            echo "error|Imposible actualizar producto!";
+        try {
+            if ($stmt->execute()) {
+                echo "success|Producto actualizado!";
+            } else {
+                echo "error|Imposible actualizar producto!";
+            }
+        } catch (Exception $e) {
+            echo "error|Imagen demasiado grande!";
         }
         $stmt = null;
     }

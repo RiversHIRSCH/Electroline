@@ -402,10 +402,7 @@
                     html: mensaje[1]
                 });
             } else {
-                M.toast({
-                    html: "Imagen demasiado grande!"
-                });
-                console.log("No se definió el tipo de respuesta: ");
+                console.log("No se definió el tipo de respuesta");
             }
         });
     }
@@ -470,10 +467,7 @@
                     html: mensaje[1]
                 });
             } else {
-                M.toast({
-                    html: "Imagen demasiado grande!"
-                });
-                console.log("No se definió el tipo de respuesta: ");
+                console.log("No se definió el tipo de respuesta");
             }
         });
     }
