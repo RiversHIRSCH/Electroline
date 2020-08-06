@@ -53,7 +53,7 @@
                     <h4 id="tituloModalEditarInventario" class="grey-text"></h4>
                 </div>
                 <div class="col s3 right-align">
-                    <img src="" id="vizualizadorImagen" class="w-100" style="height: 100px;padding-left: 2vh;">
+                    <img src="" id="vizualizadorImagen" style="width: 130px;padding-left: 2vh;">
                 </div>
             </div>
             <div class="row">
