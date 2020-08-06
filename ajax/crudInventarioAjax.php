@@ -43,7 +43,6 @@ if ($accion == "leer") {
             <table id="tabla' . $_POST['cat'] . '" class="order-column hover nowrap compact" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th class="center-align">ID Producto</th>
                         <th class="center-align">Producto</th>
                         <th class="center-align">Marca</th>
                         <th class="center-align">Precio</th>
@@ -56,14 +55,13 @@ if ($accion == "leer") {
             foreach ($resultado as $row) {
                 echo '
                     <tr>
-                        <td>' . $row['id'] . '</td>
                         <td>' . $row['nombre'] . '</td>
                         <td>' . $row['marca'] . '</td>
                         <td>$ ' . $row['precio'] . '</td>
                         <td>' . $row['descripcion'] . '</td>
                         <td class="center">
                             <i class="tiny material-icons" onclick="prepararCampos' . $row['id'] . '()">edit</i>
-                            <i class="tiny material-icons" style="padding-left: 7vh;">delete</i>
+                            <i id="btnEliminarProducto' . $row['id'] . '" class="tiny material-icons" style="padding-left: 7vh;">delete</i>
                         </td>
                     </tr>
 
@@ -80,6 +78,12 @@ if ($accion == "leer") {
                             $("#tituloModalEditarInventario").append("<strong>' . strtoupper($row['nombre']) . ' </strong>");
                             $("#modalEditarInventario").modal("open");
                         }
+
+                        $("#btnEliminarProducto' . $row['id'] . '").on("click", function(){
+                            if(confirm("Seguro de eliminar ' . $row['nombre'] . ' ?")){
+                                eliminarProducto("' . $row['id'] . '","' . $row['categoria'] . '");
+                            }
+                        });
                     </script>
             ';
             }
@@ -91,7 +95,7 @@ if ($accion == "leer") {
     }
 } elseif ($accion == "agregar") {
     if ($_FILES['imagenProducto']['error'] === 4) {
-        die("success|Vacio");
+        die("error|Seleccione una imagen!");
     } elseif ($_FILES['imagenProducto']['error'] === 1) {
         die("error|La imagen sobrepasa el limite de tamaño (2MB)");
     } elseif ($_FILES['imagenProducto']['error'] === 0) {
@@ -109,4 +113,26 @@ if ($accion == "leer") {
     } else {
         die("error|Verifique sus datos");
     }
+} elseif ($accion == "editar") {
+    if ($_FILES['imagenProductoE']['error'] === 4) {
+        CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], "", $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
+    } elseif ($_FILES['imagenProductoE']['error'] === 1) {
+        die("error|La imagen sobrepasa el limite de tamaño (2MB)");
+    } elseif ($_FILES['imagenProductoE']['error'] === 0) {
+        $imagenBinaria = addslashes(file_get_contents($_FILES['imagenProductoE']['tmp_name']));
+        $nombreArchivo = $_FILES['imagenProductoE']['name'];
+        $extensiones = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
+        $extension = explode('.', $nombreArchivo);
+        $extension = end($extension);
+        $extension = strtolower($extension);
+        if (!in_array($extension, $extensiones)) {
+            die('error|Sólo elija imagenes con extensiones: ' . implode(', ', $extensiones));
+        } else {
+            CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], $imagenBinaria, $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
+        }
+    } else {
+        die("error|Verifique sus datos");
+    }
+} elseif ($accion == "eliminar") {
+    CrudInventario::eliminar($_POST['idProducto']);
 }

@@ -36,4 +36,43 @@ class CrudInventario
             echo "error|Imposible registrar producto!";
         }
     }
+    public static function editar($idProducto, $nombre, $marca, $precio, $imagen, $categoria, $descripcion)
+    {
+        if ($imagen == "") {
+            $SQL = "UPDATE inventario
+                SET nombre='$nombre',
+                    marca='$marca',
+                    precio='$precio',
+                    categoria='$categoria',
+                    descripcion='$descripcion'
+                WHERE id='$idProducto';";
+        } else {
+            $SQL = "UPDATE inventario
+                SET nombre='$nombre',
+                    marca='$marca',
+                    precio='$precio',
+                    imagen='$imagen',
+                    categoria='$categoria',
+                    descripcion='$descripcion'
+                WHERE id='$idProducto';";
+        }
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            echo "success|Producto actualizado!";
+        } else {
+            echo "error|Imposible actualizar producto!";
+        }
+        $stmt = null;
+    }
+    public static function eliminar($idProducto)
+    {
+        $SQL = "DELETE FROM inventario WHERE id='$idProducto';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            echo "success|Producto eliminado!";
+        } else {
+            echo "error|Imposible eliminar producto!";
+        }
+        $stmt = null;
+    }
 }
