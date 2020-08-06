@@ -1,4 +1,4 @@
-<!-- Modal Structure -->
+<!-- Modal Agregar Inventario -->
 <div id="modalInventario" class="modal">
     <form id="formInventario">
         <div class="modal-content">
@@ -32,8 +32,57 @@
                     <input type="text" id="idCategoria" name="idCategoria">
                 </div>
                 <div class="input-field col s12">
-                    <textarea id="descripcionProducto" name="descripcionProducto" class="materialize-textarea"></textarea>
+                    <textarea id="descripcionProducto" name="descripcionProducto" class="materialize-textarea" required></textarea>
                     <label for="descripcionProducto">Descripción</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            <button type="submit" class="waves-effect waves-green btn-flat">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Modal Editar Inventario -->
+<div id="modalEditarInventario" class="modal">
+    <form id="formEditarInventario">
+        <div class="modal-content">
+            <div class="row valign-wrapper">
+                <div class="col s9 left-align">
+                    <h4 id="tituloModalEditarInventario" class="grey-text"></h4>
+                </div>
+                <div class="col s3 right-align">
+                    <img src="" id="vizualizadorImagen" class="w-100" style="height: 100px;padding-left: 2vh;">
+                </div>
+            </div>
+            <div class="row">
+                <input type="text" id="idProductoE" name="idProductoE">
+                <input type="text" id="accionE" name="accion" value="editar">
+                <div class="input-field col s6">
+                    <input id="nombreProductoE" name="nombreProductoE" type="text" class="validate" required>
+                </div>
+                <div class="input-field col s6">
+                    <input id="marcaProductoE" name="marcaProductoE" type="text" class="validate" required>
+                </div>
+                <div class="input-field col s6">
+                    <input id="precioProductoE" name="precioProductoE" type="number" class="validate" required>
+                </div>
+                <div class="file-field input-field col s6">
+                    <div class="btn-small red lighten-2 waves-effect waves-light">
+                        <span>Cambiar imagen</span>
+                        <input type="file" id="imagenProductoE" name="imagenProductoE">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Elige una imagen">
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <input id="categoriaProductoE" type="text" class="validate" required>
+                    <input type="text" id="idCategoriaE" name="idCategoriaE">
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="descripcionProductoE" name="descripcionProductoE" class="materialize-textarea" required></textarea>
                 </div>
             </div>
         </div>
@@ -147,6 +196,11 @@
         $('#formInventario').submit(function(e) {
             e.preventDefault();
             guardarProducto($('#categoriaProducto').val());
+        });
+
+        $('#formEditarInventario').submit(function(e) {
+            e.preventDefault();
+            console.log("Editando producto");
         });
     });
 
@@ -360,45 +414,5 @@
                 console.log("No se definió el tipo de respuesta: ");
             }
         });
-        // $.ajax({
-        //     type: "POST",
-        //     url: "ajax/crudInventarioAjax.php",
-        //     data: {
-        //         accion: "agregar",
-        //         producto,
-        //         marca,
-        //         precio,
-        //         categoria: idCategoria,
-        //         descripcion
-        //     },
-        //     error: function(data) {
-        //         console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
-        //     },
-        //     success: function(data) {
-        //         $('#modalInventario').modal('close');
-        //         M.toast({
-        //             html: 'Producto agregado exitosamente'
-        //         });
-        //         document.getElementById('formInventario').reset();
-        //         switch (categoria) {
-        //             case "Audio":
-        //                 mostrarAudio();
-        //                 break;
-        //             case "Cableado":
-        //                 mostrarCableado();
-        //                 break;
-        //             case "Iluminacion":
-        //                 mostrarIluminacion();
-        //                 break;
-        //             case "Componentes":
-        //                 mostrarComponentes();
-        //                 break;
-
-        //             default:
-        //                 console.error("Tabla no actualizada !");
-        //                 break;
-        //         }
-        //     }
-        // });
     }
 </script>
