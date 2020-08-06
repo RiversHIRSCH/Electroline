@@ -5,7 +5,7 @@ $accion = $_POST['accion'];
 
 if ($accion == "leer") {
     $resultado = CrudInventario::leer($_POST['cat']);
-    if (count($resultado) > 0 && $accion == "leer") {
+    if (count($resultado) > 0) {
         if ($_POST['cat'] == "ventas") {
             echo '
                 <table id="tabla' . $_POST['cat'] . '" class="order-column hover nowrap compact" style="width: 100%;">
@@ -15,7 +15,6 @@ if ($accion == "leer") {
                             <th class="center-align">Cliente</th>
                             <th class="center-align">Fecha</th>
                             <th class="center-align">Descripción</th>
-                            <th class="center-align">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,10 +26,6 @@ if ($accion == "leer") {
                             <td>' . $row['cliente'] . '</td>
                             <td>' . $row['fecha'] . '</td>
                             <td>' . $row['descripcion'] . '</td>
-                            <td class="center">
-                                <i class="tiny material-icons">edit</i>
-                                <i class="tiny material-icons" style="padding-left: 7vh;">delete</i>
-                            </td>
                         </tr>
                 ';
             }
