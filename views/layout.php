@@ -30,7 +30,7 @@
 
 <body id="cuerpo">
     <!-- Formulario oculto para paso de datos -->
-    <form id="infoForm" action="./home" method="post" style="display: none;">
+    <form id="infoForm" action="home" method="post" style="display: none;">
         <input type="text" id="info" name="info" value="">
     </form>
 

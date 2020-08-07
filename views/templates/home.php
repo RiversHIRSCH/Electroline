@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+# CONEXION
+require_once './models/conexion.php';
+# NAVBAR
+include "navbar.php";
+
 if (isset($_POST['info'])) {
     echo '
     <script>
@@ -9,10 +14,6 @@ if (isset($_POST['info'])) {
     </script>
     ';
 }
-# Barra de navegacion
-include "navbar.php";
-
-require_once './models/conexion.php';
 
 if (isset($_SESSION['user_id'])) {
     $idUsuario = $_SESSION['user_id'];

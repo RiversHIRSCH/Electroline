@@ -151,28 +151,30 @@ $(document).ready(function () {
                 // Sin datos para buscar
             }
             else {
-                obtenerDatosGenerales();
                 if (location.pathname == "/Electroline/" || location.pathname == "/Electroline/welcome") { // Validar si se esta en la bienvenida...
                     var formulario = document.getElementById("infoForm"); // redireccionar al home
                     $('#info').val(busqueda);
                     formulario.submit();
+                } else {
+                    obtenerDatosGenerales();
                 }
             }
         }
     });
     $('#searchInMenu').keypress(function (e) {
-        let code2 = (e.keyCode ? e.keyCode : e.which);
-        if (code2 == 13) {
-            let busqueda2 = $('#searchInMenu').val();
-            if (busqueda2 == "" || busqueda2 == " ") {
+        let code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) {
+            let busqueda = $('#searchInMenu').val();
+            if (busqueda == "" || busqueda == " ") {
                 // Sin datos para buscar
             }
             else {
-                obtenerDatosGenerales();
-                if (location.pathname == "/Electroline/") { // Validar si se esta en la bienvenida...
+                if (location.pathname == "/Electroline/" || location.pathname == "/Electroline/welcome") { // Validar si se esta en la bienvenida...
                     var formulario = document.getElementById("infoForm"); // redireccionar al home
-                    $('#info').val(busqueda2);
+                    $('#info').val(busqueda);
                     formulario.submit();
+                } else {
+                    obtenerDatosGenerales();
                 }
             }
         }
