@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+    header("Location: /Electroline/inventory");
+}
+if (isset($_SESSION['user_id'])) {}
+
+# Barra de navegacion
+include "navbar.php";
+?>
+<script>
+    document.getElementById("exitIcon").style.display = "none";
+</script>
+
 <div style="overflow-y: scroll; height: 90vh;">
     <!-- Cuerpo de la bienvenida -->
     <div id="welcomeContainer">

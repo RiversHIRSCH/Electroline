@@ -11,12 +11,12 @@
                     </a>
                 </li>
                 <li id="carIcon">
-                    <a href="#" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Carrito">
+                    <a class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Carrito">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
                 <li id="exitIcon">
-                    <a href="#" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Salir">
+                    <a id="salir" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Salir">
                         <i class="fas fa-power-off"></i>
                     </a>
                 </li>
@@ -113,7 +113,7 @@
                 <div class="card-content">
                     <div class="row">
                         <h5 class="center grey-text"><strong>REGISTRO</strong></h5>
-                        <form>
+                        <form id="formRegistrarUsuario">
                             <div class="input-field col s12">
                                 <input id="nombreRegistroUsuario" type="text" class="validate" required>
                                 <label for="nombreRegistroUsuario">Nombre</label>
@@ -152,10 +152,10 @@
                 <div class="card-content">
                     <div class="row">
                         <h5 class="center grey-text"><strong>INICIAR SESIÓN</strong></h5>
-                        <form>
+                        <form id="formIdentificarUsuario">
                             <div class="input-field col s12">
-                                <input id="aliasUsuario" type="text" class="validate" required>
-                                <label for="aliasUsuario">Usuario</label>
+                                <input id="correoUsuario" type="email" class="validate" required>
+                                <label for="correoUsuario">Correo</label>
                             </div>
                             <div class="input-field col s12">
                                 <input id="contraseniaUsuario" type="password" class="validate" required>
