@@ -16,9 +16,19 @@
                     </a>
                 </li>
                 <li id="exitIcon">
-                    <a id="salir" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Salir">
-                        <i class="fas fa-power-off"></i>
+                    <a class="dropdown-trigger tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Usuario" data-target="infoUser">
+                        <i class="fas fa-user-alt"></i>
                     </a>
+                    <ul id="infoUser" class="dropdown-content" style="min-width: 40vh;">
+                        <li>
+                            <a class="grey-text text-darken-2">
+                                <h6 id="nombreUsuarioNav"></h6>
+                                <small id="correoUsuarioNav"></small>
+                            </a>
+                        </li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li id="salir"><a class="red-text"><i class="fas fa-power-off"></i> Salir</a></li>
+                    </ul>
                 </li>
             </ul>
             <!-- Input para buscar -->

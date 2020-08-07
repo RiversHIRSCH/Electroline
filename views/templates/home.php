@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (isset($_POST['info'])) {
     echo '
     <script>
@@ -7,8 +9,42 @@ if (isset($_POST['info'])) {
     </script>
     ';
 }
-?>
+# Barra de navegacion
+include "navbar.php";
 
+require_once './models/conexion.php';
+
+if (isset($_SESSION['user_id'])) {
+    $idUsuario = $_SESSION['user_id'];
+    $stmt = Conexion::conectar()->prepare("SELECT nombre, correo FROM usuarios WHERE id='$idUsuario';");
+    $stmt->execute();
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    $usuario = null;
+    if (count($resultado) > 0) {
+        $usuario = $resultado;
+        $stmt = null;
+    }
+?>
+    <script>
+        document.getElementById("loginIcon").style.display = "none";
+        document.getElementById("carIcon").style.display = "block";
+        document.getElementById("exitIcon").style.display = "block";
+        $('#nombreUsuarioNav').empty();
+        $('#nombreUsuarioNav').append("<?= $usuario['nombre'] ?>");
+        $('#correoUsuarioNav').empty();
+        $('#correoUsuarioNav').append("<?= $usuario['correo'] ?>");
+    </script>
+<?php
+} else {
+?>
+    <script>
+        document.getElementById("loginIcon").style.display = "block";
+        document.getElementById("carIcon").style.display = "none";
+        document.getElementById("exitIcon").style.display = "none";
+    </script>
+<?php
+}
+?>
 <div class="row">
     <!-- Menu -->
     <div class="col l3 hide-on-med-and-down white" style="min-height: 90vh; border-right: 5px solid #e57373;">

@@ -152,7 +152,7 @@ $(document).ready(function () {
             }
             else {
                 obtenerDatosGenerales();
-                if (location.pathname == "/Electroline/") { // Validar si se esta en la bienvenida...
+                if (location.pathname == "/Electroline/" || location.pathname == "/Electroline/welcome") { // Validar si se esta en la bienvenida...
                     var formulario = document.getElementById("infoForm"); // redireccionar al home
                     $('#info').val(busqueda);
                     formulario.submit();
@@ -272,7 +272,6 @@ function obtenerDatosGenerales() {
             console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
         },
         success: function (data) {
-            console.log("Datos recuperados1");
             $('#busqueda').empty();
             $('#busqueda').append(data);
             document.getElementById("tituloDashboard").innerHTML = "Resultados de busqueda...";
@@ -298,7 +297,6 @@ function buscarPorCategoria(categoria) {
             console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
         },
         success: function (data) {
-            console.log("Datos recuperados2");
             $('#busqueda').empty();
             $('#busqueda').append(data);
             $('#search').val(categoria);
@@ -331,7 +329,6 @@ function busquedaPorRangoDePrecio() {
                     console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
                 },
                 success: function (data) {
-                    console.log("Datos recuperados3");
                     $('#busqueda').empty();
                     $('#busqueda').append(data);
                     $('#search').val("");

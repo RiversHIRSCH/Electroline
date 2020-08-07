@@ -7,9 +7,15 @@ if (isset($_SESSION['admin_id'])) {
 ?>
     <script>
         document.getElementById('cuerpo').style.cssText = 'overflow-y: hidden;';
+        document.getElementById("loginIcon").style.display = "none";
+        document.getElementById("carIcon").style.display = "none";
         document.getElementById("exitIcon").style.display = "block";
+        $('#nombreUsuarioNav').empty();
+        $('#nombreUsuarioNav').append("Admin");
+        $('#correoUsuarioNav').empty();
+        $('#correoUsuarioNav').append("admin@admin");
     </script>
-    
+
     <!-- Modal Agregar Inventario -->
     <div id="modalInventario" class="modal">
         <form id="formInventario">

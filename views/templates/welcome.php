@@ -4,12 +4,16 @@ session_start();
 if (isset($_SESSION['admin_id'])) {
     header("Location: /Electroline/inventory");
 }
-if (isset($_SESSION['user_id'])) {}
+if (isset($_SESSION['user_id'])) {
+    header("Location: /Electroline/home");
+}
 
 # Barra de navegacion
 include "navbar.php";
 ?>
 <script>
+    document.getElementById("loginIcon").style.display = "block";
+    document.getElementById("carIcon").style.display = "none";
     document.getElementById("exitIcon").style.display = "none";
 </script>
 
