@@ -17,7 +17,7 @@ if (isset($_POST['info'])) {
 
 if (isset($_SESSION['user_id'])) {
     $idUsuario = $_SESSION['user_id'];
-    $stmt = Conexion::conectar()->prepare("SELECT nombre, correo FROM usuarios WHERE id='$idUsuario';");
+    $stmt = Conexion::conectar()->prepare("SELECT id, nombre, correo FROM usuarios WHERE id='$idUsuario';");
     $stmt->execute();
     $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
     $usuario = null;
@@ -34,6 +34,10 @@ if (isset($_SESSION['user_id'])) {
         $('#nombreUsuarioNav').append("<?= $usuario['nombre'] ?>");
         $('#correoUsuarioNav').empty();
         $('#correoUsuarioNav').append("<?= $usuario['correo'] ?>");
+        $('#btnCarrito').on('click', function() {
+            obtenerCarrito("<?= $usuario['id'] ?>");
+        });
+        let idUsuarioGlobal = "<?= $usuario['id'] ?>";
     </script>
 <?php
 } else {
@@ -42,6 +46,7 @@ if (isset($_SESSION['user_id'])) {
         document.getElementById("loginIcon").style.display = "block";
         document.getElementById("carIcon").style.display = "none";
         document.getElementById("exitIcon").style.display = "none";
+        let idUsuarioGlobal = 0;
     </script>
 <?php
 }

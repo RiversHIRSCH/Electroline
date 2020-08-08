@@ -24,7 +24,7 @@ include "navbar.php";
             <div class="row center-align valign-wrapper">
                 <div class="col s8 offset-s2">
                     <h4> <strong class="grey-text text-darken-3"> MUCHO MAS QUE UN SITIO DE COMERCIO ELECTRÓNICO </strong> </h4>
-                    <h6 class="header"><button class="btn-small red lighten-2 pulse">Crea tu cuenta ahora</button> y disfruta de una experiencia completa</h6>
+                    <h6 class="header"><button id="creaTuCuentaAhora" class="btn-small red lighten-2 pulse" onclick="$('.tap-target').tapTarget('open')">Crea tu cuenta ahora</button> y disfruta de una experiencia completa</h6>
                 </div>
             </div>
             <div class="carousel carousel-slider parallax-container" style="max-height: 65vh;">

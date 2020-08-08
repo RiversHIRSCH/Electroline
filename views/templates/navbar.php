@@ -11,7 +11,7 @@
                     </a>
                 </li>
                 <li id="carIcon">
-                    <a class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Carrito">
+                    <a id="btnCarrito" class="tooltipped btn btn-floating red lighten-2 modal-trigger" href="#modalCarrito" data-position="bottom" data-tooltip="Carrito">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
@@ -97,6 +97,22 @@
         <li class="center-align"><a href="#"><i class="fas fa-power-off"></i> Cerrar sesión</a></li>
     </div>
 </ul>
+
+<!-- Modal Structure CARRITO -->
+<div id="modalCarrito" class="modal bottom-sheet">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s11 left-align">
+                <h4 class="blue-text text-lighten-2">Carrito de Compras</h4>
+                <p>Agrega tus productos al carrito y se vizualizarán aquí</p>
+            </div>
+            <div class="col s1 right-align">
+                <i class="material-icons small modal-close waves-effect waves-red red-text">close</i>
+            </div>
+            <div id="contenedorCarrito"></div>
+        </div>
+    </div>
+</div>
 
 <!-- Tap Target Structure USUARIO -->
 <div class="tap-target red lighten-3" data-target="inicioSesion">

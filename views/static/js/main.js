@@ -141,6 +141,11 @@ $(document).ready(function () {
         document.getElementById("eleccionRegistro").style.display = "none";
         document.getElementById("eleccionIngresar").style.display = "none";
     });
+    $('#creaTuCuentaAhora').on('click', function () {
+        document.getElementById("eleccionInicio").style.display = "none";
+        document.getElementById("eleccionRegistro").style.display = "block";
+        document.getElementById("eleccionIngresar").style.display = "none";
+    });
 
     // DETECTAR ENTER EN LAS BARRAS DE BUSQUEDA
     $('#search').keypress(function (e) {
@@ -659,6 +664,69 @@ function eliminarProducto(idProducto, categoria) {
     });
 }
 
-function aniadirAlCarrito(id) {
-    M.toast({ html: 'Añadir al carrito ' + id });
+// CARRITO DE COMPRAS
+function obtenerCarrito(idUsuario) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/carritoAjax.php",
+        data: {
+            tipoPeticion: "leer",
+            idUsuario
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para obtener carrito, DETALLES: " + data);
+        },
+        success: function (data) {
+            $('#contenedorCarrito').empty();
+            $('#contenedorCarrito').append(data);
+        }
+    });
+}
+
+function aniadirAlCarrito(idProducto) {
+    if (idUsuarioGlobal != 0) {
+        $.ajax({
+            type: "POST",
+            url: "ajax/carritoAjax.php",
+            data: {
+                tipoPeticion: "agregar",
+                idProducto,
+                idUsuario: idUsuarioGlobal
+            },
+            error: function (data) {
+                console.error("Error peticion ajax para agregar al carrito, DETALLES: " + data);
+            },
+            success: function (data) {
+                let mensaje = data.split("|");
+                obtenerCarrito(idUsuarioGlobal);
+                $('#modalCarrito').modal('open');
+                M.toast({ html: mensaje[1] });
+            }
+        });
+    } else {
+        M.toast({ html: 'Debe iniciar sesión para añadir productos al carrito ' });
+    }
+}
+
+function eliminarDelCarrito(idProductoCarrito) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/carritoAjax.php",
+        data: {
+            tipoPeticion: "eliminar",
+            idProductoCarrito
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para eliminar del carrito, DETALLES: " + data);
+        },
+        success: function (data) {
+            obtenerCarrito(idUsuarioGlobal);
+            let mensaje = data.split("|");
+            M.toast({ html: mensaje[1] });
+        }
+    });
+}
+
+function pagarCarrito(idUsuario) {
+    console.log("Pagando carrito de " + idUsuario);
 }

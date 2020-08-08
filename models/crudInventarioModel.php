@@ -16,7 +16,7 @@ class CrudInventario
         } else {
             $SQL = "SELECT a.id,a.nombre,a.marca,a.precio,a.imagen,b.categoria,a.descripcion
                 FROM inventario AS a
-                INNER JOIN categorias AS b ON b.id=a.categoria
+                INNER JOIN categorias AS b ON b.id=a.idCategoria
                 WHERE b.categoria='$categoria'
                 GROUP BY a.id";
             $stmt = Conexion::conectar()->prepare($SQL);
@@ -27,7 +27,7 @@ class CrudInventario
     }
     public static function agregar($producto, $marca, $precio, $imagen, $categoria, $descripcion)
     {
-        $SQL = "INSERT INTO inventario (nombre,marca,precio,imagen,categoria,descripcion) VALUES ('$producto','$marca','$precio','$imagen','$categoria','$descripcion');";
+        $SQL = "INSERT INTO inventario (nombre,marca,precio,imagen,idCategoria,descripcion) VALUES ('$producto','$marca','$precio','$imagen','$categoria','$descripcion');";
         $stmt = Conexion::conectar()->prepare($SQL);
         try {
             if ($stmt->execute()) {
@@ -46,7 +46,7 @@ class CrudInventario
                 SET nombre='$nombre',
                     marca='$marca',
                     precio='$precio',
-                    categoria='$categoria',
+                    idCategoria='$categoria',
                     descripcion='$descripcion'
                 WHERE id='$idProducto';";
         } else {
@@ -55,7 +55,7 @@ class CrudInventario
                     marca='$marca',
                     precio='$precio',
                     imagen='$imagen',
-                    categoria='$categoria',
+                    idCategoria='$categoria',
                     descripcion='$descripcion'
                 WHERE id='$idProducto';";
         }
