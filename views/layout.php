@@ -12,9 +12,6 @@
     <!-- Materialize-v1.0.0 -->
     <link type="text/css" rel="stylesheet" href="views/static/materialize/css/materialize.min.css" media="screen,projection">
     <script type="text/javascript" src="views/static/materialize/js/materialize.min.js"></script>
-    <!-- fontawesome-free-5.13.1-web -->
-    <link rel="stylesheet" href="views/static/fontawesome/css/all.css">
-    <script src="views/static/fontawesome/js/all.js"></script>
     <!-- DataTables-1.10.21 -->
     <link rel="stylesheet" href="views/static/datatables/datatables.min.css">
     <script src="views/static/datatables/datatables.min.js"></script>

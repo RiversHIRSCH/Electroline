@@ -6,17 +6,17 @@
             <ul class="right">
                 <li id="loginIcon">
                     <a id="inicioSesion" class="tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
-                        <i class="fas fa-user-alt"></i>
+                        <i class="material-icons">person</i>
                     </a>
                 </li>
                 <li id="carIcon">
                     <a id="btnCarrito" class="tooltipped btn btn-floating blue lighten-2 modal-trigger" href="#modalCarrito" data-position="bottom" data-tooltip="Carrito">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="material-icons">shopping_cart</i>
                     </a>
                 </li>
                 <li id="exitIcon">
                     <a class="dropdown-trigger tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Usuario" data-target="infoUser">
-                        <i class="fas fa-user-alt"></i>
+                        <i class="material-icons">person</i>
                     </a>
                     <ul id="infoUser" class="dropdown-content" style="min-width: 40vh;">
                         <li>
@@ -26,7 +26,7 @@
                             </a>
                         </li>
                         <li class="divider" tabindex="-1"></li>
-                        <li id="salir"><a class="blue-text"><i class="fas fa-power-off"></i> Salir</a></li>
+                        <li id="salir"><a class="red-text"><i class="material-icons">settings_power</i> Salir</a></li>
                     </ul>
                 </li>
             </ul>
