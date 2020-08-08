@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="views\static\css\fallback-icons.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="views/static/js/jquery-3.5.1.min.js"></script>
     <!-- Materialize-v1.0.0 -->
