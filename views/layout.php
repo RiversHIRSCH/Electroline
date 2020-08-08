@@ -47,7 +47,7 @@
 
     <!-- Flotante de redes sociales -->
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red lighten-2">
+        <a class="btn-floating btn-large blue lighten-2">
             <i class="large material-icons tooltipped" data-position="left" data-tooltip="Redes sociales">menu</i>
         </a>
         <ul>

@@ -24,19 +24,19 @@ include "navbar.php";
             <div class="row center-align valign-wrapper">
                 <div class="col s8 offset-s2">
                     <h4> <strong class="grey-text text-darken-3"> MUCHO MAS QUE UN SITIO DE COMERCIO ELECTRÓNICO </strong> </h4>
-                    <h6 class="header"><button id="creaTuCuentaAhora" class="btn-small red lighten-2 pulse" onclick="$('.tap-target').tapTarget('open')">Crea tu cuenta ahora</button> y disfruta de una experiencia completa</h6>
+                    <h6 class="header"><button id="creaTuCuentaAhora" class="btn-small blue lighten-2 pulse" onclick="$('.tap-target').tapTarget('open')">Crea tu cuenta ahora</button> y disfruta de una experiencia completa</h6>
                 </div>
             </div>
             <div class="carousel carousel-slider parallax-container" style="max-height: 65vh;">
                 <div class="carousel-fixed-item center-align row">
                     <div class="col l2 offset-l3">
-                        <a class="btn-small waves-effect red lighten-2" id="loMasNuevo">Lo más nuevo</a>
+                        <a class="btn-small waves-effect blue lighten-2" id="loMasNuevo">Lo más nuevo</a>
                     </div>
                     <div class="col l2">
-                        <a class="btn-small waves-effect red lighten-2" id="quienesSomos">¿Quienes somos?</a>
+                        <a class="btn-small waves-effect blue lighten-2" id="quienesSomos">¿Quienes somos?</a>
                     </div>
                     <div class="col l2">
-                        <a class="btn-small waves-effect red lighten-2" id="contactanos">Contáctanos</a>
+                        <a class="btn-small waves-effect blue lighten-2" id="contactanos">Contáctanos</a>
                     </div>
                 </div>
                 <a class="carousel-item parallax"><img src="views/static/img/12.jpg"></a>
@@ -83,26 +83,26 @@ include "navbar.php";
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h4> <strong class="red-text text-lighten-2"> CONTÁCTANOS </strong> </h4>
+                    <h4> <strong class="blue-text text-lighten-2"> CONTÁCTANOS </strong> </h4>
                     <div class="row">
                         <form action="" method="post">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix red-text text-lighten-2">account_circle</i>
+                                <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
                                 <input id="name" type="text" class="validate">
                                 <label for="name" class="">Nombre</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix red-text text-lighten-2">mail</i>
+                                <i class="material-icons prefix blue-text text-lighten-2">mail</i>
                                 <input id="email" type="email" class="validate">
                                 <label for="email" class="">Email</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix red-text text-lighten-2">mail</i>
+                                <i class="material-icons prefix blue-text text-lighten-2">mail</i>
                                 <textarea id="issueContact" class="materialize-textarea"></textarea>
                                 <label for="issueContact" class="">Textarea</label>
                             </div>
                             <div class="input-field col s12 right-align">
-                                <button class="btn waves-effect waves-light red lighten-2" type="submit" name="action">Enviar
+                                <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Enviar
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>
@@ -110,11 +110,11 @@ include "navbar.php";
                     </div>
                 </div>
                 <div class="col l4 offset-l1 s12 center-align" style="padding-top: 15vh;">
-                    <a class="brand-logo red-text text-lighten-2 waves-effect pulse"><i class="fab fa-9x fa-accusoft"></i></a>
+                    <a class="brand-logo blue-text text-lighten-2 waves-effect pulse"><i class="fab fa-9x fa-accusoft"></i></a>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright red lighten-2">
+        <div class="footer-copyright blue lighten-2">
             <div class="container">
                 © 2020 Copyright | Electroline - Todos los derechos reservados
                 <a class="grey-text text-lighten-4 right" href="#!">Nombres del equipo</a>

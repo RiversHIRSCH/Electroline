@@ -59,4 +59,44 @@ class Carrito
         }
         $stmt = null;
     }
+    public static function agregarPedido($idUsuario, $idProducto, $producto, $marca, $precio, $imagen, $idCategoria, $descripcion)
+    {
+        $SQL = "INSERT INTO pedidos (idUsuario,idProducto,nombre,marca,precio,imagen,idCategoria,descripcion) VALUES ('$idUsuario','$idProducto','$producto','$marca','$precio','$imagen','$idCategoria','$descripcion');";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    public static function buscarUsuarioEnPedidos($idUsuario)
+    {
+        $SQL = "SELECT * FROM pedidos WHERE idUsuario='$idUsuario';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll();
+        return $resultado;
+    }
+    public static function eliminarCarrito($idUsuario)
+    {
+        $SQL = "DELETE FROM carrito WHERE idUsuario='$idUsuario';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        $stmt = null;
+    }
+    public static function eliminarPedido($idUsuario)
+    {
+        $SQL = "DELETE FROM pedidos WHERE idUsuario='$idUsuario';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            echo "success|Pedido cancelado!";
+        } else {
+            echo "error|Imposible cancelar pedido!";
+        }
+        $stmt = null;
+    }
 }

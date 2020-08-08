@@ -53,14 +53,14 @@ if (count($resultado) == 0) {
                                 <h6><strong class="grey-text text-darken-4">$ ' . $row['precio'] . '</strong></h6>
                             </div>
                             <div class="col s6 right">
-                                <p class="right"><small class="red-text text-darken-1">' . $row['categoria'] . '</small></p>
+                                <p class="right"><small class="blue-text text-darken-1">' . $row['categoria'] . '</small></p>
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
                         <div class="valign-wrapper">
                             <div class="col l4 s12 offset-l4 right-align">
-                                <a class="tooltipped red-text text-lighten-2" data-position="bottom" data-tooltip="Añadir al carrito" onclick="aniadirAlCarrito(' . "'" . $row['id'] . "'" . ');">
+                                <a class="tooltipped blue-text text-lighten-2" data-position="bottom" data-tooltip="Añadir al carrito" onclick="aniadirAlCarrito(' . "'" . $row['id'] . "'" . ');">
                                     <i class="small material-icons">add_shopping_cart</i>
                                 </a>
                             </div>

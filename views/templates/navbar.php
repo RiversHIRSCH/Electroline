@@ -1,22 +1,21 @@
 <!-- Barra de navegacion -->
 <div class="navbar-fixed">
-    <nav style="padding-right: 2vh;">
+    <nav class="blue lighten-2" style="padding-right: 2vh;">
         <div class="nav-wrapper">
-            <a href="/Electroline" class="brand-logo"><i class="fab fa-accusoft"></i> Electroline</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
+            <a href="/Electroline" class="brand-logo left" style="padding-left: 5vh;"><i class="fab fa-accusoft"></i> Electroline</a>
+            <ul class="right">
                 <li id="loginIcon">
-                    <a id="inicioSesion" class="tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
+                    <a id="inicioSesion" class="tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
                         <i class="fas fa-user-alt"></i>
                     </a>
                 </li>
                 <li id="carIcon">
-                    <a id="btnCarrito" class="tooltipped btn btn-floating red lighten-2 modal-trigger" href="#modalCarrito" data-position="bottom" data-tooltip="Carrito">
+                    <a id="btnCarrito" class="tooltipped btn btn-floating blue lighten-2 modal-trigger" href="#modalCarrito" data-position="bottom" data-tooltip="Carrito">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
                 <li id="exitIcon">
-                    <a class="dropdown-trigger tooltipped btn btn-floating red lighten-2" data-position="bottom" data-tooltip="Usuario" data-target="infoUser">
+                    <a class="dropdown-trigger tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Usuario" data-target="infoUser">
                         <i class="fas fa-user-alt"></i>
                     </a>
                     <ul id="infoUser" class="dropdown-content" style="min-width: 40vh;">
@@ -27,12 +26,12 @@
                             </a>
                         </li>
                         <li class="divider" tabindex="-1"></li>
-                        <li id="salir"><a class="red-text"><i class="fas fa-power-off"></i> Salir</a></li>
+                        <li id="salir"><a class="blue-text"><i class="fas fa-power-off"></i> Salir</a></li>
                     </ul>
                 </li>
             </ul>
             <!-- Input para buscar -->
-            <div class="input-field right hide-on-med-and-down" style="width: 55vh;">
+            <div class="input-field right" style="width: 55vh;">
                 <input id="search" type="search" placeholder="Buscar productos, marcas y más...">
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons" onclick="vaciarBuscador();">close</i>
@@ -40,63 +39,6 @@
         </div>
     </nav>
 </div>
-
-<!-- Menu en tamaño sm -->
-<ul class="sidenav" id="mobile-demo">
-    <!-- Input para buscar -->
-    <nav>
-        <div class="nav-wrapper">
-            <div class="input-field">
-                <input id="searchInMenu" type="search" placeholder="Buscar productos y más...">
-                <label class="label-icon" for="searchInMenu"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-            </div>
-        </div>
-    </nav>
-    <br>
-    <!-- Inputs para rango de precio -->
-    <div class="row center-align red-text text-lighten-2">
-        <div class="col s8 offset-s2">
-            <h6>Rango de precio</h6>
-        </div>
-        <div class="col s3 offset-s2">
-            <div class="input-field">
-                <input id="minimoInMenu" type="text" class="validate">
-                <label for="minimoInMenu">Mínimo</label>
-            </div>
-        </div>
-        <div class="col s2" style="padding-top: 2vh;">
-            <div class="input-field">
-                <i class="fas fa-minus"></i>
-            </div>
-        </div>
-        <div class="col s3">
-            <div class="input-field">
-                <input id="maximoInMenu" type="text" class="validate">
-                <label for="maximoInMenu">Máximo</label>
-            </div>
-        </div>
-    </div>
-    <!-- Lista de categorias en el menu vertical -->
-    <div class="row center-align">
-        <!-- Dropdown Trigger -->
-        <a class='dropdown-trigger btn red lighten-2' href='#' data-target='dropdownInMenu'>Categorías<i class="material-icons right">arrow_drop_down</i></a>
-        <!-- Dropdown Structure -->
-        <ul id='dropdownInMenu' class='dropdown-content'>
-            <li><a class="red-text text-lighten-2" href="#!">Audio</a></li>
-            <li><a class="red-text text-lighten-2" href="#!">Cableado</a></li>
-            <li><a class="red-text text-lighten-2" href="#!">Iluminación</a></li>
-            <li><a class="red-text text-lighten-2" href="#!">Componentes</a></li>
-        </ul>
-    </div>
-    <br>
-    <!-- Controles de la navegación principal -->
-    <div style="width:100%; position: absolute; bottom: 12vh;">
-        <hr>
-        <li class="center-align"><a href="#"><i class="fas fa-shopping-cart"></i> Carrito de compras</a></li>
-        <li class="center-align"><a href="#"><i class="fas fa-power-off"></i> Cerrar sesión</a></li>
-    </div>
-</ul>
 
 <!-- Modal Structure CARRITO -->
 <div id="modalCarrito" class="modal bottom-sheet">
@@ -107,7 +49,7 @@
                 <p>Agrega tus productos al carrito y se vizualizarán aquí</p>
             </div>
             <div class="col s1 right-align">
-                <i class="material-icons small modal-close waves-effect waves-red red-text">close</i>
+                <i class="material-icons small modal-close waves-effect waves-blue blue-text">close</i>
             </div>
             <div id="contenedorCarrito"></div>
         </div>
@@ -115,7 +57,7 @@
 </div>
 
 <!-- Tap Target Structure USUARIO -->
-<div class="tap-target red lighten-3" data-target="inicioSesion">
+<div class="tap-target blue lighten-3" data-target="inicioSesion">
     <div class="tap-target-content white-text">
         <div class="row">
             <div id="eleccionInicio" class="card" style="display: block;">

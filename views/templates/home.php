@@ -53,7 +53,7 @@ if (isset($_SESSION['user_id'])) {
 ?>
 <div class="row">
     <!-- Menu -->
-    <div class="col l3 hide-on-med-and-down white" style="min-height: 90vh; border-right: 5px solid #e57373;">
+    <div class="col l3 hide-on-med-and-down white" style="min-height: 90vh; border-right: 5px solid #64b5f6;">
         <!-- Inputs para rango de precio -->
         <div class="row center-align">
             <br>
@@ -78,7 +78,7 @@ if (isset($_SESSION['user_id'])) {
                 </div>
             </div>
             <div class="col l2" style="padding-top: 1vh;">
-                <button class="btn-small red lighten-2" onclick="busquedaPorRangoDePrecio();">Buscar</button>
+                <button class="btn-small blue lighten-2" onclick="busquedaPorRangoDePrecio();">Buscar</button>
             </div>
         </div>
         <br><br>
@@ -89,13 +89,13 @@ if (isset($_SESSION['user_id'])) {
             </div>
             <br><br>
             <!-- Dropdown Trigger -->
-            <a class='dropdown-trigger btn red lighten-2' href='#' data-target='dropdown'>Categorías<i class="material-icons right">arrow_drop_down</i></a>
+            <a class='dropdown-trigger btn blue lighten-2' href='#' data-target='dropdown'>Categorías<i class="material-icons right">arrow_drop_down</i></a>
             <!-- Dropdown Structure -->
             <ul id='dropdown' class='dropdown-content'>
-                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('audio');">Audio</a></li>
-                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('cableado');">Cableado</a></li>
-                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('iluminación');">Iluminación</a></li>
-                <li><a class="red-text text-lighten-2" onclick="buscarPorCategoria('componentes');">Componentes</a></li>
+                <li><a class="blue-text text-lighten-2" onclick="buscarPorCategoria('audio');">Audio</a></li>
+                <li><a class="blue-text text-lighten-2" onclick="buscarPorCategoria('cableado');">Cableado</a></li>
+                <li><a class="blue-text text-lighten-2" onclick="buscarPorCategoria('iluminación');">Iluminación</a></li>
+                <li><a class="blue-text text-lighten-2" onclick="buscarPorCategoria('componentes');">Componentes</a></li>
             </ul>
         </div>
     </div>
@@ -119,5 +119,20 @@ if (isset($_SESSION['user_id'])) {
             </div>
             <div id="busqueda"></div>
         </div>
+    </div>
+</div>
+
+<!-- Modal Structure PEDIDO -->
+<div id="modalPedido" class="modal">
+    <div class="modal-content">
+        <h4>Pedido Guardado</h4>
+        <p style="text-align: justify;">Tu pedido ha sido guardado. Podrás recogerlo en nuestra sucursal en nuestros horarios de atención.</p>
+        <br>
+        <small class="blue-text">NOTA</small>
+        <br>
+        <small class="blue-text">No podrás hacer un nuevo pedido hasta recoger o cancelar el pedido actual.</small>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-teal btn-flat">Aceptar</a>
     </div>
 </div>

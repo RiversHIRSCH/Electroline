@@ -13,6 +13,17 @@ class CrudInventario
             $stmt->execute();
             return $stmt->fetchAll();
             $stmt = null;
+        } elseif ($categoria == "pedidos") {
+            $SQL = "SELECT a.idUsuario,a.fecha,b.nombre AS usuario,b.correo,b.telefono,
+                        SUM(IF(a.precio!=0,a.precio,0))AS total
+                    FROM pedidos AS a
+                    INNER JOIN usuarios AS b 
+                        ON b.id=a.idUsuario
+                    GROUP BY a.idUsuario";
+            $stmt = Conexion::conectar()->prepare($SQL);
+            $stmt->execute();
+            return $stmt->fetchAll();
+            $stmt = null;
         } else {
             $SQL = "SELECT a.id,a.nombre,a.marca,a.precio,a.imagen,b.categoria,a.descripcion
                 FROM inventario AS a

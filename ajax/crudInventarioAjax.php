@@ -24,7 +24,7 @@ if ($accion == "leer") {
                         <tr>
                             <td>' . $row['producto'] . '</td>
                             <td>' . $row['cliente'] . '</td>
-                            <td>' . $row['fecha'] . '</td>
+                            <td class="center-align">' . date("d-m-Y", strtotime($row['fecha'])) . '</td>
                             <td>' . $row['descripcion'] . '</td>
                         </tr>
                 ';
@@ -33,6 +33,39 @@ if ($accion == "leer") {
                     </tbody>
                 </table>
             ';
+        } elseif ($_POST['cat'] == "pedidos") {
+            echo '
+                    <table id="tabla' . $_POST['cat'] . '" class="order-column hover nowrap compact" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class="center-align">Cliente</th>
+                                <th class="center-align">Correo</th>
+                                <th class="center-align">Teléfono</th>
+                                <th class="center-align">Fecha</th>
+                                <th class="center-align">Total</th>
+                                <th class="center-align">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                ';
+            foreach ($resultado as $row) {
+                echo '
+                            <tr>
+                                <td>' . $row['usuario'] . '</td>
+                                <td>' . $row['correo'] . '</td>
+                                <td class="center-align">' . $row['telefono'] . '</td>
+                                <td class="center-align">' . date("d-m-Y", strtotime($row['fecha'])) . '</td>
+                                <td class="right-align">$ ' . number_format($row['total'], 2, ".", ",") . '</td>
+                                <td class="center-align">
+                                    <i onclick="verPedido(' . "'" . $row['idUsuario'] . "'" . ')" class="tiny material-icons" title="Ver pedido">visibility</i>
+                                </td>
+                            </tr>
+                    ';
+            }
+            echo '
+                        </tbody>
+                    </table>
+                ';
         } else {
             echo '
             <table id="tabla' . $_POST['cat'] . '" class="order-column hover nowrap compact" style="width: 100%;">
@@ -87,6 +120,23 @@ if ($accion == "leer") {
                 </table>
             ';
         }
+    } else {
+        echo '
+            <div class="col s12 center-align" style="padding-top:5vh;">
+                <div class="row">
+                    <div class="col s6 offset-s3">
+                        <div class="card blue lighten-2">
+                            <div class="card-content white-text">
+                                <span class="card-title">Atención!</span>
+                                <p style="text-align: justify;">Aún no existen elementos de esta categoría</p>
+                                <hr>
+                                <p class="center-align"><small><i class="fas fa-spin fa-sync-alt"></i> Agregue elementos al inventario o espere a que clientes soliciten sus pedidos.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ';
     }
 } elseif ($accion == "agregar") {
     if ($_FILES['imagenProducto']['error'] === 4) {

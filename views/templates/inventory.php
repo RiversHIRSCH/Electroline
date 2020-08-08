@@ -37,7 +37,7 @@ if (isset($_SESSION['admin_id'])) {
                         <label for="precioProducto">Precio</label>
                     </div>
                     <div class="file-field input-field col s6">
-                        <div class="btn-small red lighten-2 waves-effect waves-light">
+                        <div class="btn-small blue lighten-2 waves-effect waves-light">
                             <span>Imagen</span>
                             <input type="file" id="imagenProducto" name="imagenProducto">
                         </div>
@@ -89,7 +89,7 @@ if (isset($_SESSION['admin_id'])) {
                         <input id="precioProductoE" name="precioProductoE" type="number" class="validate" required>
                     </div>
                     <div class="file-field input-field col s6">
-                        <div class="btn-small red lighten-2 waves-effect waves-light">
+                        <div class="btn-small blue lighten-2 waves-effect waves-light">
                             <span>Cambiar imagen</span>
                             <input type="file" id="imagenProductoE" name="imagenProductoE">
                         </div>
@@ -109,6 +109,11 @@ if (isset($_SESSION['admin_id'])) {
         </form>
     </div>
 
+    <!-- Modal Ver Pedidos -->
+    <div id="modalVerPedidos" class="modal modal-fixed-footer">
+        <div id="contenedorVerPedidos"></div>
+    </div>
+
     <div class="row">
         <!-- CONTENIDO -->
         <div class="col s12 m9 l10" style="overflow-y: hidden; height: 92vh">
@@ -118,10 +123,10 @@ if (isset($_SESSION['admin_id'])) {
                     <div class="col l4 offset-l4">
                         <div class="row valign-wrapper">
                             <div class="col l6">
-                                <h4 style="border-left: 5px solid #e57373; padding-left: 3vh;">Audio</h4>
+                                <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Audio</h4>
                             </div>
                             <div class="col l6" style="padding-top: 3vh;">
-                                <button class="btn-small red lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Audio')">Agregar</button>
+                                <button class="btn-small blue lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Audio')">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -134,10 +139,10 @@ if (isset($_SESSION['admin_id'])) {
                     <div class="col l4 offset-l4">
                         <div class="row valign-wrapper">
                             <div class="col l6">
-                                <h4 style="border-left: 5px solid #e57373; padding-left: 3vh;">Cableado</h4>
+                                <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Cableado</h4>
                             </div>
                             <div class="col l6" style="padding-top: 3vh;">
-                                <button class="btn-small red lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Cableado')">Agregar</button>
+                                <button class="btn-small blue lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Cableado')">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -150,10 +155,10 @@ if (isset($_SESSION['admin_id'])) {
                     <div class="col l5 offset-l4">
                         <div class="row valign-wrapper">
                             <div class="col l6">
-                                <h4 style="border-left: 5px solid #e57373; padding-left: 3vh;">Iluminación</h4>
+                                <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Iluminación</h4>
                             </div>
                             <div class="col l6" style="padding-top: 3vh;">
-                                <button class="btn-small red lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Iluminacion')">Agregar</button>
+                                <button class="btn-small blue lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Iluminacion')">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -166,21 +171,30 @@ if (isset($_SESSION['admin_id'])) {
                     <div class="col l6 offset-l4">
                         <div class="row valign-wrapper">
                             <div class="col l6">
-                                <h4 style="border-left: 5px solid #e57373; padding-left: 3vh;">Componentes</h4>
+                                <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Componentes</h4>
                             </div>
                             <div class="col l6" style="padding-top: 3vh;">
-                                <button class="btn-small red lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Componentes')">Agregar</button>
+                                <button class="btn-small blue lighten-2 waves-effect waves-light btn modal-trigger" href="#modalInventario" onclick="insertarCategoria('Componentes')">Agregar</button>
                             </div>
                         </div>
                     </div>
                     <div id="contenedorComponentes" class="col l12"></div>
                 </div>
             </div>
+            <div id="seccionPedidos" class="section" style="padding-left: 5vh;">
+                <div class="row">
+                    <br>
+                    <div class="col l2 offset-l5">
+                        <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Pedidos</h4>
+                    </div>
+                    <div id="contenedorPedidos" class="col l12"></div>
+                </div>
+            </div>
             <div id="seccionVentas" class="section" style="padding-left: 5vh;">
                 <div class="row">
                     <br>
                     <div class="col l2 offset-l5">
-                        <h4 style="border-left: 5px solid #e57373; padding-left: 3vh;">Ventas</h4>
+                        <h4 style="border-left: 5px solid #64b5f6; padding-left: 3vh;">Ventas</h4>
                     </div>
                     <div id="contenedorVentas" class="col l12"></div>
                 </div>
@@ -189,13 +203,16 @@ if (isset($_SESSION['admin_id'])) {
         <!-- SCROLLSPY -->
         <div class="col hide-on-small-only m3 l2" style="padding-left: 7vh; padding-top: 20vh;">
             <ul class="section table-of-contents">
-                <li><a id="linkSeccionInventario"><strong class="red-text text-lighten-2">INVENTARIO</strong></a></li>
+                <li><a id="linkSeccionInventario"><strong class="blue-text text-lighten-2">INVENTARIO</strong></a></li>
                 <li><a id="linkSeccionAudio" class="active">Audio</a></li>
                 <li><a id="linkSeccionCableado">Cableado</a></li>
                 <li><a id="linkSeccionIluminación">Iluminación</a></li>
                 <li><a id="linkSeccionComponentes">Componentes</a></li>
                 <br>
-                <li><a id="linkSeccionVentas"><strong class="red-text text-lighten-2">VENTAS</strong></a></li>
+                <li><a id="linkSeccionPedidos"><strong class="blue-text text-lighten-2">PEDIDOS</strong></a></li>
+                <li><a id="linkSeccionPedidosGeneral">General</a></li>
+                <br>
+                <li><a id="linkSeccionVentas"><strong class="blue-text text-lighten-2">VENTAS</strong></a></li>
                 <li><a id="linkSeccionVentasGeneral">General</a></li>
             </ul>
         </div>
@@ -207,6 +224,7 @@ if (isset($_SESSION['admin_id'])) {
             mostrarCableado();
             mostrarIluminacion();
             mostrarComponentes();
+            mostrarPedidos();
             mostrarVentas();
         });
     </script>

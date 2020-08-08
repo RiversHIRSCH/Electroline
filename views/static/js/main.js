@@ -57,6 +57,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').removeClass("active");
     });
     $('#linkSeccionAudio').on('click', function () {
@@ -67,6 +68,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').removeClass("active");
     });
     $('#linkSeccionCableado').on('click', function () {
@@ -77,6 +79,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').addClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').removeClass("active");
     });
     $('#linkSeccionIluminación').on('click', function () {
@@ -87,6 +90,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').addClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').removeClass("active");
     });
     $('#linkSeccionComponentes').on('click', function () {
@@ -97,6 +101,29 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').addClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionPedidos').on('click', function () {
+        document
+            .getElementById("seccionPedidos")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').addClass("active");
+        $('#linkSeccionVentasGeneral').removeClass("active");
+    });
+    $('#linkSeccionPedidosGeneral').on('click', function () {
+        document
+            .getElementById("seccionPedidos")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+        $('#linkSeccionAudio').removeClass("active");
+        $('#linkSeccionCableado').removeClass("active");
+        $('#linkSeccionIluminación').removeClass("active");
+        $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').addClass("active");
         $('#linkSeccionVentasGeneral').removeClass("active");
     });
     $('#linkSeccionVentas').on('click', function () {
@@ -107,6 +134,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').addClass("active");
     });
     $('#linkSeccionVentasGeneral').on('click', function () {
@@ -117,6 +145,7 @@ $(document).ready(function () {
         $('#linkSeccionCableado').removeClass("active");
         $('#linkSeccionIluminación').removeClass("active");
         $('#linkSeccionComponentes').removeClass("active");
+        $('#linkSeccionPedidosGeneral').removeClass("active");
         $('#linkSeccionVentasGeneral').addClass("active");
     });
 
@@ -433,6 +462,26 @@ function mostrarComponentes() {
     });
 }
 
+// MOSTRAR PEDIDOS
+function mostrarPedidos() {
+    $.ajax({
+        type: "POST",
+        url: "ajax/crudInventarioAjax.php",
+        data: {
+            accion: "leer",
+            cat: "pedidos"
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
+        },
+        success: function (data) {
+            $('#contenedorPedidos').empty();
+            $('#contenedorPedidos').append(data);
+            tabularInventario("tablapedidos");
+        }
+    });
+}
+
 // MOSTRAR VENTAS
 function mostrarVentas() {
     $.ajax({
@@ -664,6 +713,54 @@ function eliminarProducto(idProducto, categoria) {
     });
 }
 
+// VER PEDIDO
+function verPedido(idUsuario) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/pedidosAjax.php",
+        data: {
+            tipoPeticion: "verPedido",
+            idUsuario
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para ver pedidos, DETALLES: " + data);
+        },
+        success: function (data) {
+            $('#contenedorVerPedidos').empty();
+            $('#contenedorVerPedidos').append(data);
+            $('#modalVerPedidos').modal('open');
+        }
+    });
+}
+
+function pedidoPagado(idUsuario) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/pedidosAjax.php",
+        data: {
+            tipoPeticion: "pagarPedido",
+            idUsuario
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para pagar pedido, DETALLES: " + data);
+        },
+        success: function (data) {
+            let mensaje = data.split("|");
+            if (mensaje[0] == "success") {
+                $('#modalVerPedidos').modal('close');
+                mostrarPedidos();
+                mostrarVentas();
+                M.toast({ html: mensaje[1] });
+            } else if (mensaje[0] == "error") {
+                M.toast({ html: mensaje[1] });
+            } else {
+                console.log("Tipo de respuesta no definido!"+data);
+            }
+        }
+    });
+}
+
+/////////////////////////////////////////////////////////////////////////
 // CARRITO DE COMPRAS
 function obtenerCarrito(idUsuario) {
     $.ajax({
@@ -698,13 +795,37 @@ function aniadirAlCarrito(idProducto) {
             },
             success: function (data) {
                 let mensaje = data.split("|");
-                obtenerCarrito(idUsuarioGlobal);
-                $('#modalCarrito').modal('open');
-                M.toast({ html: mensaje[1] });
+                if (mensaje[0] == "success") {
+                    obtenerCarrito(idUsuarioGlobal);
+                    $('#modalCarrito').modal('open');
+                    M.toast({ html: mensaje[1] });
+                } else if (mensaje[0] == "error") {
+                    if (confirm(mensaje[1] + " Quires cancelarlo y crear un nuevo carrito?")) {
+                        $.ajax({
+                            type: "POST",
+                            url: "ajax/carritoAjax.php",
+                            data: {
+                                tipoPeticion: "eliminarPedido",
+                                idUsuario: idUsuarioGlobal
+                            },
+                            error: function (data) {
+                                console.error("Error peticion ajax para eliminar pedido, DETALLES: " + data);
+                            },
+                            success: function (data) {
+                                let mensaje = data.split("|");
+                                aniadirAlCarrito(idProducto); // recursivo XD
+                                M.toast({ html: mensaje[1] });
+                            }
+                        });
+                    }
+                } else {
+                    console.log("Tipo de respuesta no definido!");
+                }
+
             }
         });
     } else {
-        M.toast({ html: 'Debe iniciar sesión para añadir productos al carrito ' });
+        M.toast({ html: 'Debes iniciar sesión para añadir productos al carrito ' });
     }
 }
 
@@ -727,6 +848,28 @@ function eliminarDelCarrito(idProductoCarrito) {
     });
 }
 
-function pagarCarrito(idUsuario) {
-    console.log("Pagando carrito de " + idUsuario);
+function pedirCarrito(idUsuario) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/carritoAjax.php",
+        data: {
+            tipoPeticion: "hacerPedido",
+            idUsuario
+        },
+        error: function (data) {
+            console.error("Error peticion ajax para eliminar del carrito, DETALLES: " + data);
+        },
+        success: function (data) {
+            let mensaje = data.split("|");
+            if (mensaje[0] == "success") {
+                $('#modalCarrito').modal('close');
+                $('#modalPedido').modal('open');
+            } else if (mensaje[0] == "error") {
+                M.toast({ html: mensaje[1] });
+            } else {
+                console.log("Tipo de respuesta no definido!");
+            }
+
+        }
+    });
 }
