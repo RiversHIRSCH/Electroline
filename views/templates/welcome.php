@@ -99,7 +99,7 @@ include "navbar.php";
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                            <input type="email" class="validate" disabled value="fernando@electroline.com">
+                            <input type="email" class="validate" disabled value="fernando@electronline.com">
                             <label>Email</label>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ include "navbar.php";
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                            <input type="email" class="validate" disabled value="esmeralda@electroline.com">
+                            <input type="email" class="validate" disabled value="esmeralda@electronline.com">
                             <label>Email</label>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ include "navbar.php";
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                            <input type="email" class="validate" disabled value="daniela@electroline.com">
+                            <input type="email" class="validate" disabled value="daniela@electronline.com">
                             <label>Email</label>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ include "navbar.php";
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                            <input type="email" class="validate" disabled value="edith@electroline.com">
+                            <input type="email" class="validate" disabled value="edith@electronline.com">
                             <label>Email</label>
                         </div>
                     </div>
@@ -155,7 +155,7 @@ include "navbar.php";
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                            <input type="email" class="validate" disabled value="nelly@electroline.com">
+                            <input type="email" class="validate" disabled value="nelly@electronline.com">
                             <label>Email</label>
                         </div>
                     </div>

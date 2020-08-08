@@ -295,6 +295,10 @@ $(document).ready(function () {
     });
 });
 
+function debesIniciarSesion() {
+    M.toast({ html: "Debes iniciar sesión para añadir al carrito" });
+}
+
 function obtenerDatosGenerales() {
     let busqueda = $('#search').val();
     $.ajax({
