@@ -16,5 +16,6 @@ $(document).ready(function () {
   $('.dropdown-trigger').dropdown();
   $('.tap-target').tapTarget();
   $('.scrollspy').scrollSpy();
+  $('.tabs').tabs();
   //M.AutoInit(); // Inicializar todos los elementos
 });

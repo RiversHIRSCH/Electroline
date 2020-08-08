@@ -80,44 +80,95 @@ include "navbar.php";
 
     <!-- Footer -->
     <footer id="seccionContactanos" class="page-footer white">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h4> <strong class="blue-text text-lighten-2"> CONTÁCTANOS </strong> </h4>
-                    <div class="row">
-                        <form action="" method="post">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
-                                <input id="name" type="text" class="validate">
-                                <label for="name" class="">Nombre</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix blue-text text-lighten-2">mail</i>
-                                <input id="email" type="email" class="validate">
-                                <label for="email" class="">Email</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix blue-text text-lighten-2">class</i>
-                                <textarea id="issueContact" class="materialize-textarea"></textarea>
-                                <label for="issueContact" class="">Asunto</label>
-                            </div>
-                            <div class="input-field col s12 right-align">
-                                <button class="btn waves-effect waves-light blue lighten-2" type="button" name="action">Enviar
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
-                        </form>
+        <div class="row" style="padding-left: 5vh;padding-right: 5vh;">
+            <div class="col l8 s12">
+                <h4> <strong class="blue-text text-lighten-2"> CONTÁCTANOS </strong> </h4>
+                <ul id="tabs-swipe-demo" class="tabs">
+                    <li class="tab"><a class="blue-text text-lighten-2 active" href="#contact-swipe-1">Fernando</a></li>
+                    <li class="tab"><a class="blue-text text-lighten-2" href="#contact-swipe-2">Esmeralda</a></li>
+                    <li class="tab"><a class="blue-text text-lighten-2" href="#contact-swipe-3">Daniela</a></li>
+                    <li class="tab"><a class="blue-text text-lighten-2" href="#contact-swipe-4">Edith</a></li>
+                    <li class="tab"><a class="blue-text text-lighten-2" href="#contact-swipe-5">Nelly</a></li>
+                </ul>
+                <div id="contact-swipe-1" class="col s12">
+                    <div class="row" style="padding-top: 3vh;">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
+                            <input type="text" class="validate" disabled value="Fernando Escobar Escobar">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                            <input type="email" class="validate" disabled value="fernando@electroline.com">
+                            <label>Email</label>
+                        </div>
                     </div>
                 </div>
-                <div class="col l4 offset-l1 s12 center-align" style="padding-top: 15vh;">
-                    <a class="brand-logo blue-text text-lighten-2 waves-effect pulse"><i class="fab fa-9x fa-accusoft"></i></a>
+                <div id="contact-swipe-2" class="col s12">
+                    <div class="row" style="padding-top: 3vh;">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
+                            <input type="text" class="validate" disabled value="Esmeralda Romero Hernández">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                            <input type="email" class="validate" disabled value="esmeralda@electroline.com">
+                            <label>Email</label>
+                        </div>
+                    </div>
                 </div>
+                <div id="contact-swipe-3" class="col s12">
+                    <div class="row" style="padding-top: 3vh;">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
+                            <input type="text" class="validate" disabled value="Daniela Anaid Chaves Zenteno">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                            <input type="email" class="validate" disabled value="daniela@electroline.com">
+                            <label>Email</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="contact-swipe-4" class="col s12">
+                    <div class="row" style="padding-top: 3vh;">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
+                            <input type="text" class="validate" disabled value="Edith Vanessa Hernández">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                            <input type="email" class="validate" disabled value="edith@electroline.com">
+                            <label>Email</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="contact-swipe-5" class="col s12">
+                    <div class="row" style="padding-top: 3vh;">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">account_circle</i>
+                            <input type="text" class="validate" disabled value="Nelly Marañón Morales">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                            <input type="email" class="validate" disabled value="nelly@electroline.com">
+                            <label>Email</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 s12 center-align" style="padding-top: 15vh;">
+                <a class="brand-logo blue-text text-lighten-2 waves-effect pulse"><i class="fab fa-9x fa-accusoft"></i></a>
             </div>
         </div>
         <div class="footer-copyright blue lighten-2">
             <div class="container">
                 © 2020 Copyright | Electroline - Todos los derechos reservados
-                <a class="grey-text text-lighten-4 right">Nelly, Daniela, Esme, Fernando</a>
+                <a class="grey-text text-lighten-4 right">Fernando, Esmeralda, Daniela, Edith, Nelly</a>
             </div>
         </div>
     </footer>

@@ -59,7 +59,15 @@ if ($tipoPeticion == "verPedido") {
     }
     if ($agregados == count($pedido)) {
         if (Pedidos::eliminarPedido($_POST['idUsuario'])) {
-            echo 'success|Pedido pagado!';
+            $productosEliminados = 0;
+            foreach ($pedido as $key => $value) {
+                $productosEliminados = $productosEliminados + Pedidos::eliminarInventario($value['idProducto']);
+            }
+            if ($productosEliminados == count($pedido)) {
+                echo 'success|Pedido pagado!';
+            } else {
+                echo "error|Imposible eliminar de inventario!";
+            }
         } else {
             echo 'success|Imposible eliminar pedido!';
         }

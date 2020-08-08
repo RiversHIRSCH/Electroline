@@ -37,4 +37,15 @@ class Pedidos
         }
         $stmt = null;
     }
+    public static function eliminarInventario($idProducto)
+    {
+        $SQL = "DELETE FROM inventario WHERE id='$idProducto';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 0;
+        }
+        $stmt = null;
+    }
 }

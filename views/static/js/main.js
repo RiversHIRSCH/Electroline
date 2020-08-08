@@ -279,16 +279,16 @@ $(document).ready(function () {
                 let mensaje = data.split("|");
                 if (mensaje[0] == "success") {
                     if (email == "admin@admin") {
-                        location.href = "inventory";
+                        location.href = "admin";
                     } else {
-                        location.href = "welcome";
+                        location.href = "home";
                     }
                 } else if (mensaje[0] == "error") {
                     M.toast({
                         html: mensaje[1]
                     })
                 } else {
-                    console.log("Tipo de respuesta no definido!");
+                    console.log("Tipo de respuesta no definido!" + data);
                 }
             }
         });
@@ -748,13 +748,17 @@ function pedidoPagado(idUsuario) {
             let mensaje = data.split("|");
             if (mensaje[0] == "success") {
                 $('#modalVerPedidos').modal('close');
+                mostrarAudio();
+                mostrarCableado();
+                mostrarIluminacion();
+                mostrarComponentes();
                 mostrarPedidos();
                 mostrarVentas();
                 M.toast({ html: mensaje[1] });
             } else if (mensaje[0] == "error") {
                 M.toast({ html: mensaje[1] });
             } else {
-                console.log("Tipo de respuesta no definido!"+data);
+                console.log("Tipo de respuesta no definido!" + data);
             }
         }
     });

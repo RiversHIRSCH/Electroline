@@ -25,17 +25,17 @@ class Login
         }
         $stmt = null;
     }
-    public static function identificarUsuario($correo, $contrasenia)
+    public static function identificarUsuario($correo, $password)
     {
-        $SQL = "SELECT id, contrasenia FROM usuarios WHERE correo='$correo';";
+        $SQL = "SELECT id,contrasenia FROM usuarios WHERE correo='$correo';";
         $stmt = Conexion::conectar()->prepare($SQL);
         $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (count($resultado) > 0 && password_verify($contrasenia, $resultado['contrasenia'])) {
+        $resultado = $stmt->fetchAll();
+        if (count($resultado) > 0 && password_verify($password, $resultado[0]['contrasenia'])) {
             if ($correo == "admin@admin") {
-                $_SESSION['admin_id'] = $resultado['id'];
+                $_SESSION['admin_id'] = $resultado[0]['id'];
             } else {
-                $_SESSION['user_id'] = $resultado['id'];
+                $_SESSION['user_id'] = $resultado[0]['id'];
             }
             echo "success| ";
         } else {
