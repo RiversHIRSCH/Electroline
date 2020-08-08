@@ -97,12 +97,12 @@ include "navbar.php";
                                 <label for="email" class="">Email</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix blue-text text-lighten-2">mail</i>
+                                <i class="material-icons prefix blue-text text-lighten-2">class</i>
                                 <textarea id="issueContact" class="materialize-textarea"></textarea>
-                                <label for="issueContact" class="">Textarea</label>
+                                <label for="issueContact" class="">Asunto</label>
                             </div>
                             <div class="input-field col s12 right-align">
-                                <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Enviar
+                                <button class="btn waves-effect waves-light blue lighten-2" type="button" name="action">Enviar
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>
@@ -117,7 +117,7 @@ include "navbar.php";
         <div class="footer-copyright blue lighten-2">
             <div class="container">
                 © 2020 Copyright | Electroline - Todos los derechos reservados
-                <a class="grey-text text-lighten-4 right" href="#!">Nombres del equipo</a>
+                <a class="grey-text text-lighten-4 right">Nelly, Daniela, Esme, Fernando</a>
             </div>
         </div>
     </footer>
