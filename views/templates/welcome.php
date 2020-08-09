@@ -17,7 +17,7 @@ include "navbar.php";
     document.getElementById("exitIcon").style.display = "none";
 </script>
 
-<div style="overflow-y: scroll; height: 90vh;">
+<div style="overflow-y: scroll; height: 90vh;overflow-x: hidden;">
     <!-- Cuerpo de la bienvenida -->
     <div id="welcomeContainer">
         <div style="height: 92vh;">
@@ -162,7 +162,7 @@ include "navbar.php";
                 </div>
             </div>
             <div class="col l4 s12 center-align" style="padding-top: 15vh;">
-                <a class="brand-logo blue-text text-lighten-2 waves-effect pulse"><i class="fab fa-9x fa-accusoft"></i></a>
+                <a class="brand-logo blue-text text-lighten-2 waves-effect pulse"><i><img src="views\static\img\logo2.png" style="height: 150px;"></i></a>
             </div>
         </div>
         <div class="footer-copyright blue lighten-2">

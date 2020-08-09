@@ -2,7 +2,7 @@
 <div class="navbar-fixed">
     <nav class="blue lighten-2" style="padding-right: 2vh;">
         <div class="nav-wrapper">
-            <a href="/Electroline" class="brand-logo left" style="padding-left: 5vh;"><i class="fab fa-accusoft"></i> Electronline</a>
+            <a href="/Electroline" class="brand-logo left" style="padding-left: 5vh;"><i><img src="views\static\img\logo.png" style="height: 30px;"></i> Electronline</a>
             <ul class="right">
                 <li id="loginIcon">
                     <a id="inicioSesion" class="tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
