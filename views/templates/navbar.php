@@ -31,7 +31,7 @@
                 </li>
             </ul>
             <!-- Input para buscar -->
-            <div class="input-field right" style="width: 55vh;">
+            <div id="contenedorBuscador" class="input-field right" style="width: 55vh;">
                 <input id="search" type="search" placeholder="Buscar productos, marcas y más...">
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons" onclick="vaciarBuscador();">close</i>

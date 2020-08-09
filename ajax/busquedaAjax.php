@@ -32,7 +32,7 @@ if (count($resultado) == 0) {
     if ($tipo == "loMasNuevo") {
         foreach ($resultado as $row) {
             echo '
-            <div class="col l3 m4 s6 nmmes" style="padding: 2vh;">
+            <div class="col l3 m4 s6" style="padding: 2vh;">
                 <div class="card sticky-action" style="overflow: visible;">
                     <div class="card-image waves-effect waves-block waves-light" style="height: 20vh;">
                         <img class="activator" src="data:image/jpeg;base64,' . base64_encode($row['imagen']) . '">
@@ -77,7 +77,7 @@ if (count($resultado) == 0) {
         ';
         foreach ($resultado as $row) {
             echo '
-            <div class="col l3 m4 s6 nmmes" style="padding: 2vh;">
+            <div class="col l3 m4 s6" style="padding: 2vh;">
                 <div class="card sticky-action" style="overflow: visible;">
                     <div class="card-image waves-effect waves-block waves-light" style="height: 20vh;">
                         <img class="activator" src="data:image/jpeg;base64,' . base64_encode($row['imagen']) . '">

@@ -6,6 +6,7 @@ if (isset($_SESSION['admin_id'])) {
     include "navbar.php";
 ?>
     <script>
+        document.getElementById("contenedorBuscador").style.display = "none";
         document.getElementById('cuerpo').style.cssText = 'overflow-y: hidden;';
         document.getElementById("loginIcon").style.display = "none";
         document.getElementById("carIcon").style.display = "none";

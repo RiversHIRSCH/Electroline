@@ -46,7 +46,7 @@ if ($tipoPeticion == "leer") {
 } elseif ($tipoPeticion == "agregar") {
     $existenteEnPedidos = Carrito::buscarUsuarioEnPedidos($_POST['idUsuario']);
     if (count($existenteEnPedidos) == 0) {
-        $existenteEnCarrito = Carrito::buscarProductoEnCarrito($_POST['idProducto']);
+        $existenteEnCarrito = Carrito::buscarProductoEnCarrito($_POST['idProducto'], $_POST['idUsuario']);
         if (count($existenteEnCarrito) == 0) {
             $producto = Carrito::buscarProducto($_POST['idProducto']);
             Carrito::agregarCarrito($_POST['idUsuario'], $_POST['idProducto'], $producto['nombre'], $producto['marca'], $producto['precio'], addslashes($producto['imagen']), $producto['idCategoria'], $producto['descripcion']);

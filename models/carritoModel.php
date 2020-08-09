@@ -29,9 +29,9 @@ class Carrito
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado;
     }
-    public static function buscarProductoEnCarrito($idProducto)
+    public static function buscarProductoEnCarrito($idProducto, $idUsuario)
     {
-        $SQL = "SELECT * FROM carrito WHERE idProducto='$idProducto';";
+        $SQL = "SELECT * FROM carrito WHERE idProducto='$idProducto' AND idUsuario='$idUsuario';";
         $stmt = Conexion::conectar()->prepare($SQL);
         $stmt->execute();
         $resultado = $stmt->fetchAll();

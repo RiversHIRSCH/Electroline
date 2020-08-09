@@ -27,6 +27,7 @@ if (isset($_SESSION['user_id'])) {
     }
 ?>
     <script>
+        document.getElementById("contenedorBuscador").style.display = "block";
         document.getElementById("loginIcon").style.display = "none";
         document.getElementById("carIcon").style.display = "block";
         document.getElementById("exitIcon").style.display = "block";
@@ -43,6 +44,7 @@ if (isset($_SESSION['user_id'])) {
 } else {
 ?>
     <script>
+        document.getElementById("contenedorBuscador").style.display = "block";
         document.getElementById("loginIcon").style.display = "block";
         document.getElementById("carIcon").style.display = "none";
         document.getElementById("exitIcon").style.display = "none";

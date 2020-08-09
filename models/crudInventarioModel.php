@@ -86,10 +86,14 @@ class CrudInventario
     {
         $SQL = "DELETE FROM inventario WHERE id='$idProducto';";
         $stmt = Conexion::conectar()->prepare($SQL);
-        if ($stmt->execute()) {
-            echo "success|Producto eliminado!";
-        } else {
-            echo "error|Imposible eliminar producto!";
+        try {
+            if ($stmt->execute()) {
+                echo "success|Producto eliminado!";
+            } else {
+                echo "error|Imposible eliminar producto!";
+            }
+        } catch (Exception $e) {
+            echo "error|Imposible eliminar un producto que ya se encuentra en al carrito de un cliente!";
         }
         $stmt = null;
     }
