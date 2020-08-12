@@ -55,7 +55,7 @@ if (isset($_SESSION['user_id'])) {
 ?>
 <div class="row">
     <!-- Menu -->
-    <div class="col l3 hide-on-med-and-down white" style="min-height: 90vh; border-right: 5px solid #64b5f6;">
+    <div class="col l3 m4 s12 white" style="min-height: 90vh; border-right: 5px solid #64b5f6;">
         <!-- Inputs para rango de precio -->
         <div class="row center-align">
             <br>
@@ -102,7 +102,7 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
     <!-- Dashboard -->
-    <div class="col l9 s12 white" style="overflow-y: scroll; height: 90vh;">
+    <div class="col l9 m8 s12 white">
         <div class="row">
             <h6 id="tituloDashboard" class="center-align">Resultados de busqueda...</h6>
             <div id="cardVacio" class="col s12 center-align" style="display: none;">

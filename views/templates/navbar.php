@@ -2,7 +2,7 @@
 <div class="navbar-fixed">
     <nav class="blue lighten-2" style="padding-right: 2vh;">
         <div class="nav-wrapper">
-            <a href="/Electroline" class="brand-logo left" style="padding-left: 5vh;"><i><img src="views\static\img\logo.png" style="height: 30px;"></i> Electronline</a>
+            <a href="/Electroline" class="brand-logo left hide-on-small-only" style="padding-left: 5vh;"><i><img src="views\static\img\logo.png" style="height: 30px;"></i> Electronline</a>
             <ul class="right">
                 <li id="loginIcon">
                     <a id="inicioSesion" class="tooltipped btn btn-floating blue lighten-2" data-position="bottom" data-tooltip="Iniciar sesión" onclick="$('.tap-target').tapTarget('open')">
@@ -31,7 +31,7 @@
                 </li>
             </ul>
             <!-- Input para buscar -->
-            <div id="contenedorBuscador" class="input-field right" style="width: 55vh;">
+            <div id="contenedorBuscador" class="input-field right">
                 <input id="search" type="search" placeholder="Buscar productos, marcas y más...">
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons" onclick="vaciarBuscador();">close</i>
