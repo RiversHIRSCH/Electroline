@@ -29,13 +29,13 @@ include "navbar.php";
             </div>
             <div class="carousel carousel-slider parallax-container" style="max-height: 65vh;">
                 <div class="carousel-fixed-item center-align row">
-                    <div class="col l2 offset-l3">
+                    <div class="col l4 m4 s12" style="padding-bottom:2vh;">
                         <a class="btn-small waves-effect blue lighten-2" id="loMasNuevo">Lo más nuevo</a>
                     </div>
-                    <div class="col l2">
+                    <div class="col l4 m4 s12" style="padding-bottom:2vh;">
                         <a class="btn-small waves-effect blue lighten-2" id="quienesSomos">¿Quienes somos?</a>
                     </div>
-                    <div class="col l2">
+                    <div class="col l4 m4 s12" style="padding-bottom:2vh;">
                         <a class="btn-small waves-effect blue lighten-2" id="contactanos">Contáctanos</a>
                     </div>
                 </div>
