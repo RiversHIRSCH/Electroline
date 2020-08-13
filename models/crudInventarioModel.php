@@ -97,4 +97,20 @@ class CrudInventario
         }
         $stmt = null;
     }
+    public static function buscarProductoEnCarrito($idProducto)
+    {
+        $SQL = "SELECT * FROM carrito WHERE idProducto='$idProducto';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll();
+        return $resultado;
+    }
+    public static function buscarProductoEnPedido($idProducto)
+    {
+        $SQL = "SELECT * FROM pedidos WHERE idProducto='$idProducto';";
+        $stmt = Conexion::conectar()->prepare($SQL);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll();
+        return $resultado;
+    }
 }

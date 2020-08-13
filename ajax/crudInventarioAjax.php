@@ -159,25 +159,37 @@ if ($accion == "leer") {
         die("error|Verifique sus datos");
     }
 } elseif ($accion == "editar") {
-    if ($_FILES['imagenProductoE']['error'] === 4) {
-        CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], "", $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
-    } elseif ($_FILES['imagenProductoE']['error'] === 1) {
-        die("error|La imagen sobrepasa el limite de tamaño (2MB)");
-    } elseif ($_FILES['imagenProductoE']['error'] === 0) {
-        $imagenBinaria = addslashes(file_get_contents($_FILES['imagenProductoE']['tmp_name']));
-        $nombreArchivo = $_FILES['imagenProductoE']['name'];
-        $extensiones = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
-        $extension = explode('.', $nombreArchivo);
-        $extension = end($extension);
-        $extension = strtolower($extension);
-        if (!in_array($extension, $extensiones)) {
-            die('error|Sólo elija imagenes con extensiones: ' . implode(', ', $extensiones));
+    $reservadoCarrito = CrudInventario::buscarProductoEnCarrito($_POST['idProductoE']);
+    $reservadoPedido = CrudInventario::buscarProductoEnPedido($_POST['idProductoE']);
+    if (count($reservadoCarrito) == 0 && count($reservadoPedido) == 0) {
+        if ($_FILES['imagenProductoE']['error'] === 4) {
+            CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], "", $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
+        } elseif ($_FILES['imagenProductoE']['error'] === 1) {
+            die("error|La imagen sobrepasa el limite de tamaño (2MB)");
+        } elseif ($_FILES['imagenProductoE']['error'] === 0) {
+            $imagenBinaria = addslashes(file_get_contents($_FILES['imagenProductoE']['tmp_name']));
+            $nombreArchivo = $_FILES['imagenProductoE']['name'];
+            $extensiones = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
+            $extension = explode('.', $nombreArchivo);
+            $extension = end($extension);
+            $extension = strtolower($extension);
+            if (!in_array($extension, $extensiones)) {
+                die('error|Sólo elija imagenes con extensiones: ' . implode(', ', $extensiones));
+            } else {
+                CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], $imagenBinaria, $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
+            }
         } else {
-            CrudInventario::editar($_POST['idProductoE'], $_POST['nombreProductoE'], $_POST['marcaProductoE'], $_POST['precioProductoE'], $imagenBinaria, $_POST['idCategoriaE'], $_POST['descripcionProductoE']);
+            die("error|Verifique sus datos");
         }
     } else {
-        die("error|Verifique sus datos");
+        echo 'error|Imposible editar producto, ya está en el carrito o pedido de algún cliente';
     }
 } elseif ($accion == "eliminar") {
-    CrudInventario::eliminar($_POST['idProducto']);
+    $reservadoCarrito = CrudInventario::buscarProductoEnCarrito($_POST['idProductoE']);
+    $reservadoPedido = CrudInventario::buscarProductoEnPedido($_POST['idProductoE']);
+    if (count($reservadoCarrito) == 0 && count($reservadoPedido) == 0) {
+        CrudInventario::eliminar($_POST['idProducto']);
+    } else {
+        echo 'error|Imposible eliminar producto, ya está en el carrito o pedido de algún cliente';
+    }
 }
