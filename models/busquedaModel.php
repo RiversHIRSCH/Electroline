@@ -8,8 +8,12 @@ class Busqueda
         $palabras = explode(" ", $busqueda);
         $SQL = "SELECT a.id,a.nombre,a.marca,a.precio,a.imagen,b.categoria,a.descripcion,a.idCategoria
                 FROM inventario AS a
-                INNER JOIN categorias AS b ON b.id=a.idCategoria
-                WHERE a.nombre LIKE '%$palabras[0]%' OR a.marca LIKE '%$palabras[0]%' OR b.categoria LIKE '%$palabras[0]%' OR a.descripcion LIKE '%$palabras[0]%'
+                INNER JOIN categorias AS b 
+                    ON b.id=a.idCategoria
+                WHERE a.nombre LIKE '%$palabras[0]%' AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
+                    OR a.marca LIKE '%$palabras[0]%' AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
+                    OR b.categoria LIKE '%$palabras[0]%' AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
+                    OR a.descripcion LIKE '%$palabras[0]%' AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
                 GROUP BY a.id";
         $stmt = Conexion::conectar()->prepare($SQL);
         $stmt->execute();
@@ -22,7 +26,7 @@ class Busqueda
         $SQL = "SELECT a.id,a.nombre,a.marca,a.precio,a.imagen,b.categoria,a.descripcion,a.idCategoria
                 FROM inventario AS a
                 INNER JOIN categorias AS b ON b.id=a.idCategoria
-                WHERE b.categoria='$busqueda'
+                WHERE b.categoria='$busqueda' AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
                 GROUP BY a.id";
         $stmt = Conexion::conectar()->prepare($SQL);
         $stmt->execute();
@@ -35,7 +39,7 @@ class Busqueda
         $SQL = "SELECT a.id,a.nombre,a.marca,a.precio,a.imagen,b.categoria,a.descripcion,a.idCategoria
                 FROM inventario AS a
                 INNER JOIN categorias AS b ON b.id=a.idCategoria
-                WHERE a.precio BETWEEN $minimo AND $maximo
+                WHERE a.precio BETWEEN $minimo AND $maximo AND NOT EXISTS(SELECT NULL FROM carrito AS c WHERE c.idProducto=a.id)
                 GROUP BY a.id";
         $stmt = Conexion::conectar()->prepare($SQL);
         $stmt->execute();

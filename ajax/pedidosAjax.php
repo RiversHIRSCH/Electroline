@@ -54,8 +54,9 @@ if ($tipoPeticion == "verPedido") {
     $pedido = Pedidos::obtenerPedido($_POST['idUsuario']);
     $agregados = 0;
     foreach ($pedido as $key => $value) {
+        $cliente = $value['nombreUsuario'] . ", " . $value['correo'] . ", " . $value['telefono'];
         $descripcion = "Marca:" . $value['marca'] . ", Precio:" . number_format($value['precio'], 2, ".", ",") . ", " . $value['descripcion'];
-        $agregados = $agregados + Pedidos::aniadirVenta($value['nombreProducto'], $value['nombreUsuario'], $descripcion);
+        $agregados = $agregados + Pedidos::aniadirVenta($value['nombreProducto'], $cliente, $descripcion);
     }
     if ($agregados == count($pedido)) {
         if (Pedidos::eliminarPedido($_POST['idUsuario'])) {
