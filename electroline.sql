@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-08-2020 a las 22:08:34
+-- Tiempo de generación: 13-08-2020 a las 22:13:35
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -122,7 +122,6 @@ CREATE TABLE `pedidos` (
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `domicilio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `correo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `telefono` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contrasenia` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -132,11 +131,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `domicilio`, `correo`, `telefono`, `contrasenia`) VALUES
-(1, 'admin', 'admin', 'admin@admin', '0000000000', '$2y$10$M75.L9Phy9xV.juuvheyH.9BusDzBDI122W3Ea5JHwFYvW6e3Mjve'),
-(2, 'AlejandroOOO', 'domicilio s/n 1800 calnv', 'mail@mal', '1234567890', '$2y$10$U2Pk1fw08oOu.V5fPDQttu9UxsbFITvN7Ys5DIgt9Y/fJjHt0WzWG'),
-(3, 'Rivers', 'domicilio s/n 1800 calnv mismo', 'rivers@rivers.com', '7713523938', '$2y$10$0E5mUGA9ZI0obQVDsTA8Re7464lHicmmurS6urAdnxj8RYN2lqB2e'),
-(4, 'Abril', '', 'abril@mail.com', '2222222222', '$2y$10$N9l.clye/9KTeM.1IZw76.jY3ZmGhokZ9vMQbf9R6rhKIRYOyrC7y');
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `telefono`, `contrasenia`) VALUES
+(1, 'admin', 'admin@admin', '0000000000', '$2y$10$M75.L9Phy9xV.juuvheyH.9BusDzBDI122W3Ea5JHwFYvW6e3Mjve'),
+(3, 'Rivers', 'rivers@rivers.com', '7713523938', '$2y$10$0E5mUGA9ZI0obQVDsTA8Re7464lHicmmurS6urAdnxj8RYN2lqB2e');
 
 -- --------------------------------------------------------
 
