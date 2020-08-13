@@ -100,7 +100,7 @@ if ($accion == "leer") {
                             }
                         });
                     </script>
-            ';
+                ';
             }
             echo '
                     </tbody>
