@@ -5,7 +5,7 @@ require_once "conexion.php";
 
 class Login
 {
-    public static function registrarUsuario($nombre, $domicilio, $correo, $telefono, $contrasenia)
+    public static function registrarUsuario($nombre, $correo, $telefono, $contrasenia)
     {
         $SQL = "SELECT * FROM usuarios WHERE correo = '$correo';";
         $stmt = Conexion::conectar()->prepare($SQL);
@@ -13,7 +13,7 @@ class Login
         if (count($stmt->fetchAll()) == 0) {
             $stmt = null;
             $contrasenia = password_hash($contrasenia, PASSWORD_BCRYPT);
-            $SQL = "INSERT INTO usuarios (nombre,domicilio,correo,telefono,contrasenia) VALUES ('$nombre','$domicilio','$correo','$telefono','$contrasenia');";
+            $SQL = "INSERT INTO usuarios (nombre,correo,telefono,contrasenia) VALUES ('$nombre','$correo','$telefono','$contrasenia');";
             $stmt = Conexion::conectar()->prepare($SQL);
             if ($stmt->execute()) {
                 echo "success|Usuario registrado!";
@@ -40,6 +40,31 @@ class Login
             echo "success| ";
         } else {
             echo "error|Verifica tus datos!";
+        }
+        $stmt = null;
+    }
+    public static function actualizarUsuario($idUsuario, $nombre, $correo, $telefono, $contrasenia)
+    {
+        if ($contrasenia == "") {
+            $SQL = "UPDATE usuarios
+                    SET nombre='$nombre',
+                        correo='$correo',
+                        telefono='$telefono'
+                    WHERE id='$idUsuario';";
+        } else {
+            $contrasenia = password_hash($contrasenia, PASSWORD_BCRYPT);
+            $SQL = "UPDATE usuarios
+                    SET nombre='$nombre',
+                        correo='$correo',
+                        telefono='$telefono',
+                        contrasenia='$contrasenia'
+                    WHERE id='$idUsuario';";
+        }
+        $stmt = Conexion::conectar()->prepare($SQL);
+        if ($stmt->execute()) {
+            echo "success|Usuario actualizado!";
+        } else {
+            echo "error|Imposible actualizar usuario!";
         }
         $stmt = null;
     }

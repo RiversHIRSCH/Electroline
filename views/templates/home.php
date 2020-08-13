@@ -17,7 +17,7 @@ if (isset($_POST['info'])) {
 
 if (isset($_SESSION['user_id'])) {
     $idUsuario = $_SESSION['user_id'];
-    $stmt = Conexion::conectar()->prepare("SELECT id, nombre, correo FROM usuarios WHERE id='$idUsuario';");
+    $stmt = Conexion::conectar()->prepare("SELECT id, nombre, correo, telefono, contrasenia FROM usuarios WHERE id='$idUsuario';");
     $stmt->execute();
     $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
     $usuario = null;
@@ -31,10 +31,15 @@ if (isset($_SESSION['user_id'])) {
         document.getElementById("loginIcon").style.display = "none";
         document.getElementById("carIcon").style.display = "block";
         document.getElementById("exitIcon").style.display = "block";
+        document.getElementById("paraAbrirModalEditarPerfil").style.display = "block";
         $('#nombreUsuarioNav').empty();
         $('#nombreUsuarioNav').append("<?= $usuario['nombre'] ?>");
         $('#correoUsuarioNav').empty();
         $('#correoUsuarioNav').append("<?= $usuario['correo'] ?>");
+        $('#idPerfilUsuario').val("<?= $usuario['id'] ?>");
+        $('#nombrePerfilUsuario').val("<?= $usuario['nombre'] ?>");
+        $('#correoPerfilUsuario').val("<?= $usuario['correo'] ?>");
+        $('#telefonoPerfilUsuario').val("<?= $usuario['telefono'] ?>");
         $('#btnCarrito').on('click', function() {
             obtenerCarrito("<?= $usuario['id'] ?>");
         });
@@ -48,6 +53,7 @@ if (isset($_SESSION['user_id'])) {
         document.getElementById("loginIcon").style.display = "block";
         document.getElementById("carIcon").style.display = "none";
         document.getElementById("exitIcon").style.display = "none";
+        document.getElementById("paraAbrirModalEditarPerfil").style.display = "none";
         let idUsuarioGlobal = 0;
     </script>
 <?php

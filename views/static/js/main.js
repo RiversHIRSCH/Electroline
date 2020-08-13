@@ -1,19 +1,7 @@
 $(document).ready(function () {
     // CERRAR SESION
     $('#salir').on('click', function () {
-        $.ajax({
-            type: "POST",
-            url: "ajax/loginAjax.php",
-            data: {
-                tipoPeticion: "salir"
-            },
-            error: function (data) {
-                console.error(data);
-            },
-            success: function (data) {
-                location.href = "welcome";
-            }
-        });
+        salir();
     });
     // MOSTRAR LO MAS NUEVO
     $.ajax({
@@ -214,6 +202,17 @@ $(document).ready(function () {
         }
     });
 
+    // ENTER BOTON PARA INPUT BUSCAR
+    $('#btnParaNuevaContrasenia').on('click', function () {
+        document.getElementById('contenedorInputContrasenia').style.display = "block";
+        document.getElementById('contenedorBotonVerContrasenia').style.display = "none";
+    });
+    $('#btnParaOcultarNuevaContrasenia').on('click', function () {
+        document.getElementById('contenedorInputContrasenia').style.display = "none";
+        document.getElementById('contenedorBotonVerContrasenia').style.display = "block";
+        $('#passPerfilUsuario').val("");
+    });
+
     // SUBMIT DE FORMULARIOS
     $('#formInventario').submit(function (e) {
         e.preventDefault();
@@ -226,7 +225,6 @@ $(document).ready(function () {
     $('#formRegistrarUsuario').submit(function (e) {
         e.preventDefault();
         let nombre = $('#nombreRegistroUsuario').val();
-        let domicilio = $('#domicilioRegistroUsuario').val();
         let email = $('#emailRegistroUsuario').val();
         let telefono = $('#telefonoRegistroUsuario').val();
         let contrasenia = $('#contraseniaRegistroUsuario').val();
@@ -236,7 +234,6 @@ $(document).ready(function () {
             data: {
                 tipoPeticion: "registrar",
                 nombre,
-                domicilio,
                 email,
                 telefono,
                 contrasenia
@@ -287,6 +284,35 @@ $(document).ready(function () {
                     M.toast({
                         html: mensaje[1]
                     })
+                } else {
+                    console.log("Tipo de respuesta no definido!" + data);
+                }
+            }
+        });
+    });
+    $('#formPerfil').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "ajax/loginAjax.php",
+            data: {
+                tipoPeticion: "actualizar",
+                idUsuario: $('#idPerfilUsuario').val(),
+                nombre: $('#nombrePerfilUsuario').val(),
+                correo: $('#correoPerfilUsuario').val(),
+                telefono: $('#telefonoPerfilUsuario').val(),
+                contrasenia: $('#passPerfilUsuario').val()
+            },
+            error: function (data) {
+                console.error("Error peticion ajax para obtener datos, DETALLES: " + data);
+            },
+            success: function (data) {
+                let mensaje = data.split("|");
+                if (mensaje[0] == "success") {
+                    $('#modalPerfil').modal('close');
+                    salir();
+                } else if (mensaje[0] == "error") {
+                    M.toast({ html: mensaje[1] });
                 } else {
                     console.log("Tipo de respuesta no definido!" + data);
                 }
@@ -878,6 +904,22 @@ function pedirCarrito(idUsuario) {
                 console.log("Tipo de respuesta no definido!");
             }
 
+        }
+    });
+}
+
+function salir() {
+    $.ajax({
+        type: "POST",
+        url: "ajax/loginAjax.php",
+        data: {
+            tipoPeticion: "salir"
+        },
+        error: function (data) {
+            console.error(data);
+        },
+        success: function (data) {
+            location.href = "welcome";
         }
     });
 }

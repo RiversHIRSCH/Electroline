@@ -22,10 +22,17 @@
                         <li>
                             <a class="grey-text text-darken-2">
                                 <h6 id="nombreUsuarioNav"></h6>
+                                <div class="divider"></div>
                                 <small id="correoUsuarioNav"></small>
                             </a>
                         </li>
                         <li class="divider" tabindex="-1"></li>
+                        <div id="paraAbrirModalEditarPerfil">
+                            <li>
+                                <a class="blue-text modal-trigger" href="#modalPerfil"><i class="material-icons">edit</i> Editar información</a>
+                            </li>
+                            <li class="divider" tabindex="-1"></li>
+                        </div>
                         <li id="salir"><a class="red-text"><i class="material-icons">settings_power</i> Salir</a></li>
                     </ul>
                 </li>
@@ -38,6 +45,53 @@
             </div>
         </div>
     </nav>
+</div>
+
+<!-- Modal Structure PERFIL -->
+<div id="modalPerfil" class="modal">
+    <nav class="yellow accent-4">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                <a class="breadcrumb" style="padding-left: 5vh;"><small class="grey-text text-darken-2">Deberás iniciar sesión nuevamente para guardar tu información de perfil !</small></a>
+            </div>
+        </div>
+    </nav>
+    <div class="modal-content">
+        <div class="row">
+            <form id="formPerfil" class="col s12">
+                <input type="text" id="idPerfilUsuario" style="display: none;" required>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="nombre" id="nombrePerfilUsuario" type="text" class="validate" required>
+                        <label for="nombrePerfilUsuario">Nombre de usuario</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="correo" id="correoPerfilUsuario" type="email" class="validate" required>
+                        <label for="correoPerfilUsuario">Correo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="teléfono" id="telefonoPerfilUsuario" type="text" class="validate" required>
+                        <label for="telefonoPerfilUsuario">Telefono</label>
+                    </div>
+                    <div class="input-field col s6" id="contenedorInputContrasenia" style="display: none;">
+                        <i class="material-icons prefix" id="btnParaOcultarNuevaContrasenia">cancel</i>
+                        <input placeholder="nueva contraseña" id="passPerfilUsuario" type="password" class="validate">
+                        <label for="passPerfilUsuario">Contraseña</label>
+                    </div>
+                    <div class="input-field col s6" id="contenedorBotonVerContrasenia">
+                        <button id="btnParaNuevaContrasenia" class="btn-small waves-effect waves-light grey" type="button">Nueva contraseña</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect blue lighten-2 waves-light right" type="submit">Actualizar información
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Modal Structure CARRITO -->
@@ -85,10 +139,6 @@
                             <div class="input-field col s12">
                                 <input id="nombreRegistroUsuario" type="text" class="validate" required>
                                 <label for="nombreRegistroUsuario">Nombre</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="domicilioRegistroUsuario" type="text" class="validate" required>
-                                <label for="domicilioRegistroUsuario">Domicilio</label>
                             </div>
                             <div class="input-field col s12">
                                 <input id="emailRegistroUsuario" type="email" class="validate" required>
