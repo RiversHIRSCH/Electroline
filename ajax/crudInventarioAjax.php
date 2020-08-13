@@ -88,7 +88,7 @@ if ($accion == "leer") {
                         <td>$ ' . $row['precio'] . '</td>
                         <td>' . $row['descripcion'] . '</td>
                         <td class="center">
-                            <i class="tiny material-icons" onclick="prepararCampos(' . "'" . $row['id'] . "','" . $row['nombre'] . "','" . $row['marca'] . "','" . $row['precio'] . "','" . $row['descripcion'] . "','" . $row['categoria'] . "','" . base64_encode($row['imagen']) . "'" . ')">edit</i>
+                            <i class="tiny material-icons" onclick="prepararCampos(' . "'" . $row['id'] . "','" . $row['nombre'] . "','" . $row['marca'] . "','" . $row['precio'] . "','" . preg_replace("/[\r\n|\n|\r]+/", " ", $row['descripcion']) . "','" . $row['categoria'] . "','" . base64_encode($row['imagen']) . "'" . ')">edit</i>
                             <i id="btnEliminarProducto' . $row['id'] . '" class="tiny material-icons" style="padding-left: 7vh;">delete</i>
                         </td>
                     </tr>
