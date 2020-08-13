@@ -42,7 +42,7 @@
     }
     ?>
 
-    <!-- Flotante de redes sociales -->
+    <!-- Flotante de redes sociales 
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large blue lighten-2">
             <i class="large material-icons tooltipped" data-position="left" data-tooltip="Redes sociales">menu</i>
@@ -53,7 +53,7 @@
             <li><a class="btn-floating green"><i class="fab fa-whatsapp"></i></a></li>
             <li><a class="btn-floating blue"><i class="fab fa-twitter"></i></a></li>
         </ul>
-    </div>
+    </div>-->
 </body>
 
 </html>
