@@ -11,6 +11,7 @@ if (isset($_SESSION['admin_id'])) {
         document.getElementById("loginIcon").style.display = "none";
         document.getElementById("carIcon").style.display = "none";
         document.getElementById("exitIcon").style.display = "block";
+        document.getElementById("paraAbrirModalEditarPerfil").style.display = "block";
         $('#nombreUsuarioNav').empty();
         $('#nombreUsuarioNav').append("Admin");
         $('#correoUsuarioNav').empty();
