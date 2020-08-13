@@ -908,6 +908,20 @@ function pedirCarrito(idUsuario) {
     });
 }
 
+// VER MODAL EDITAR
+function prepararCampos(idProducto, nombre, marca, precio, descripcion, categoria, imagen) {
+    $("#idProductoE").val(idProducto);
+    $("#nombreProductoE").val(nombre);
+    $("#marcaProductoE").val(marca);
+    $("#precioProductoE").val(precio);
+    $("#descripcionProductoE").val(descripcion);
+    $("#categoriaProductoE").val(categoria);
+    $("#vizualizadorImagen").attr("src", "data:image/jpeg;base64," + imagen);
+    $("#tituloModalEditarInventario").empty();
+    $("#tituloModalEditarInventario").append("<strong>" + nombre + "</strong>");
+    $("#modalEditarInventario").modal("open");
+}
+
 function salir() {
     $.ajax({
         type: "POST",

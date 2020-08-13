@@ -88,25 +88,12 @@ if ($accion == "leer") {
                         <td>$ ' . $row['precio'] . '</td>
                         <td>' . $row['descripcion'] . '</td>
                         <td class="center">
-                            <i class="tiny material-icons" onclick="prepararCampos' . $row['id'] . '()">edit</i>
+                            <i class="tiny material-icons" onclick="prepararCampos(' . "'" . $row['id'] . "','" . $row['nombre'] . "','" . $row['marca'] . "','" . $row['precio'] . "','" . $row['descripcion'] . "','" . $row['categoria'] . "','" . base64_encode($row['imagen']) . "'" . ')">edit</i>
                             <i id="btnEliminarProducto' . $row['id'] . '" class="tiny material-icons" style="padding-left: 7vh;">delete</i>
                         </td>
                     </tr>
 
                     <script>
-                        function prepararCampos' . $row['id'] . '(){
-                            $("#idProductoE").val("' . $row['id'] . '");
-                            $("#nombreProductoE").val("' . $row['nombre'] . '");
-                            $("#marcaProductoE").val("' . $row['marca'] . '");
-                            $("#precioProductoE").val("' . $row['precio'] . '");
-                            $("#descripcionProductoE").val("' . $row['descripcion'] . '");
-                            $("#categoriaProductoE").val("' . $row['categoria'] . '");
-                            $("#vizualizadorImagen").attr("src","data:image/jpeg;base64,' . base64_encode($row['imagen']) . '");
-                            $("#tituloModalEditarInventario").empty();
-                            $("#tituloModalEditarInventario").append("<strong>' . strtoupper($row['nombre']) . ' </strong>");
-                            $("#modalEditarInventario").modal("open");
-                        }
-
                         $("#btnEliminarProducto' . $row['id'] . '").on("click", function(){
                             if(confirm("Seguro de eliminar ' . $row['nombre'] . ' ?")){
                                 eliminarProducto("' . $row['id'] . '","' . $row['categoria'] . '");
