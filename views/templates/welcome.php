@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['admin_id'])) {
-    header("Location: /Electroline/inventory");
+    header("Location: /Electroline/admin");
 }
 if (isset($_SESSION['user_id'])) {
     header("Location: /Electroline/home");
